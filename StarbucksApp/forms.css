@@ -1,0 +1,62 @@
+*{
+    font-family: sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+   
+}
+
+.fieldset_1{
+    background: linear-gradient(45deg, #00704A, white);
+    display: inline-block;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px;
+}
+
+label{
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+
+.fieldset_2{
+    background: linear-gradient(45deg, #00704A, white);
+    margin-top: 25px;
+    text-align: left;
+}
+
+#address{
+    margin-left: 17px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+
+}
+
+img{
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 5px;
+    
+}
+
+img:hover{
+    transform: scale(1.25);
+    transition: .5s ease-out;
+    cursor: pointer;
+}
+
+#submit-button{
+    padding: auto;
+    margin-top: 10px;
+}
+
+.footer{
+    display:flex;
+    justify-content: space-around;
+    font-style: italic;
+    font-size: .5em;
+}
