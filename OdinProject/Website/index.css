@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --clr-drk: #1F2937;
+    --clr-lt: #E5E7EB;
+    --clr-bt: #3882F6;
+    --clr-qu: #e5e7eb;
+}
+
+ /* Navbar */
+.navbar{
+    background-color: var(--clr-drk);
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    min-height: 5vh;
+}
+
+.logo{
+    margin-left: 8em;
+    color: #ffff;
+}
+
+.list{
+    list-style-type: none;
+    display: flex;
+    margin-right: 100px;
+}
+
+.list > li > a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;  /* HAVEN'T SEEN THIS BEFORE. removes underline */
+}
+
+h1{
+    color: white;
+    font-size: 46px;
+
+}
+
+.header-font{
+    font-size: 1.1em;
+}
+
+/* Hero  */
+.header{
+    background-color: var(--clr-drk);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap; /*used the wrap property to allow align-content to work*/
+    height: 500px;
+    /* border: 10px solid black; */
+
+}
+
+.pic1{
+    height: 200px;
+    width: 100%;
+}
+
+.title-l{
+    width: 400px;
+    color: white;
+}
+
+.title-r{
+    padding-top: 25px;
+    width: 400px;
+}
+
+#submit1{
+    font-size: 14px;
+    padding: 10px 30px;
+    font-weight: bold;
+    border-radius: 8px; 
+    background-color: var(--clr-bt);
+    color: white;
+    width: 30%;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+/* Random Container */
+
+
+.random-container{
+    height: 450px;
+    /* border: 3px solid #000; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em;
+
+}
+
+.title-random{
+    /* border: 3px solid #000; */
+    height: 100%;
+    display: flex;
+    font-size: 25px;
+    flex: 1; /* why did zero, one change the height */
+}
+
+.box-container{
+    /* border: 3px solid #000; */
+    height: 100%;
+    width: 800px;
+    padding-top: 2.5em;
+    display:flex; 
+}
+
+.box-container > div {
+   /* border: 1px solid black; */
+   text-align:center;
+}
+
+.pancake{
+    height: 170px;
+    width: 170px;
+    border: 5px solid #3882F6;
+    border-radius: 10px;
+}
+
+.pancake:hover{
+    opacity: 50%;
+    cursor: pointer;
+}
+
+/* Quote Section */
+
+/* .qoute-section */
+
+.quote{
+    height: 500px;
+    /* border: 1px black solid; */
+    background-color: var(--clr-qu);
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.quote-box{
+    height: 100%;
+    /* border: 1px black solid; */
+    font-size:  33px;
+    font-style: italic;
+    text-align: center;
+    padding: 4em 6em 0;
+}
+
+.thor-box{
+    height: 100%; /* SETTING THE CHILD HEIGHT TO 100% MADE THIS WAY MORE MANAGEABLE */
+    /* border: 1px black solid; */
+    /* width: fit-content; this is real cool */
+    font-weight: bold;
+    font-size: 25px;
+    margin-right: 9em;
+    margin-bottom: 3em;
+}
+
+/* Call to Action Section */
+
+.action-section{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.container-action{
+    height: 150px;
+    width: 950px;
+    border-radius: 10px;
+    background: var(--clr-bt);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.div-action{
+    font-size: 20px;
+    color: white;
+}
+
+
+.submit2{
+    font-size: 14px;
+    padding: 10px 30px;
+    font-weight: bold;
+    border-radius: 8px; 
+    border: 1px white solid;
+    background-color: var(--clr-bt);
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* footer */
+
+.footer{
+    height: 100px;
+    background-color: var(--clr-drk);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.footer > div {
+    height: auto;
+    color: white;
+    font-size: 18px;
+}
