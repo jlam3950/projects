@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: rgb(216, 210, 210);
+}
+
+.header{
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background: dodgerblue;
+    color: #fff;
+}
+
+.scoreboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 2em;
+    min-height: 200px;
+    
+}
+
+.choices{
+    min-height: 300px;
+    border: 5px #fff solid;
+    border-radius: 25px;
+    margin:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    gap: 1em;
+}
