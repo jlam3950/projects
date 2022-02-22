@@ -1,4 +1,39 @@
-//rock paper scissors  
+
+//DOM Buttons
+
+const container = document.querySelector('#container');
+const content = document.createElement('paragraph');
+content.classList.add('report');
+const userScore = document.querySelector('#userscore');
+const computerScore = document.querySelector('#computerscore');
+
+const rockbtn = document.querySelector('#rock'); 
+rockbtn.addEventListener("click", rockSelection);
+
+const paperbtn = document.querySelector('#paper');
+paperbtn.addEventListener("click", paperSelection);
+
+const scissorbtn = document.querySelector('#scissors'); 
+scissorbtn.addEventListener("click", scissorSelection);
+
+
+//choice functions
+function rockSelection(){
+    content.textContent = (oneRound("rock", computerPlay()));
+    container.appendChild(content);
+}
+
+function paperSelection(){
+    content.textContent = (oneRound("paper", computerPlay()));
+    container.appendChild(content);
+}
+
+function scissorSelection(){
+    content.textContent = (oneRound("scissors", computerPlay()));
+    container.appendChild(content);
+}
+
+
 function computerPlay(){
     let random = Math.floor(Math.random() * 3);
 
@@ -12,66 +47,54 @@ function computerPlay(){
     return random; 
 }
 
-function psPrompt(){
-    let ps = prompt("rock,paper, scissors?");
-    let x = ps.toLowerCase()
-    return x;
-}
+let counter = {
+    player: 0,
+    cpu: 0
+};
 
-let count = 0;
+let p1 = counter.player;
+let p2 = counter.cpu;
+
 
 function oneRound(playerSelection, computerSelection){
-    // let playerSelection = "rock";       /*prompt("rock, paper, scissors?")*/
-    // const playerSelection = playerSelectionCase.toLowerCase();
-    // computerSelection = computerPlay(); 
 
     if (playerSelection == computerSelection){
-        return ("Tie!");
+        return (" Computer made the same selection. Tie!");
+        console.log(p1);
         console.log ("Tie!");
     } else if (playerSelection == 'rock' && computerSelection == 'paper'){
-        return ("You Lose!");
-        console.log("You Lose!");
+        computerScore.textContent = counter.cpu ++;
+        return ("Computer selected paper. You Lose!");
     } else if (playerSelection == 'rock' && computerSelection == 'scissors'){
-        return ("You Win!");
-        count ++; 
-        return count;
-        console.log("You Win!");
+        userScore.textContent = counter.player +=1;
+        console.log(counter.player);
+        return ("Computer selected scissors. You Win!");
     } else if (playerSelection == 'paper' && computerSelection == 'scissors'){
-        return ("You Lose!");
-        console.log("You Lose!");
+        computerScore.textContent = counter.cpu ++;
+        return ("Computer selected scissors. You Lose!");
     } else if (playerSelection == 'paper' && computerSelection == 'rock'){
-        return ("You Win!");
-        count ++; 
-        return count;
-        console.log("You Win!");
+        userScore.textContent = counter.player +=1;
+        return ("Computer selected rock. You Win!");
     } else if (playerSelection == 'scissors' && computerSelection == 'rock'){
-        return ("You Lose!");
-        console.log("You Lose!");
+        computerScore.textContent = counter.cpu ++;
+        return ("Computer selected rock. You Lose!");
     } else if (playerSelection == 'scissors' && computerSelection == 'paper'){
-        return ("You Win!");
-        count ++;
-        return count;
-        console.log("You Win!");
+        userScore.textContent = counter.player +=1;
+        return ("Computer selected paper. You Win!");
     }
+
 }
-                  
-function game(count){
-
-    for (let i = 0; i < 5; i++){ //(initial expression, condition, increment expression)
-        oneRound('rock', computerPlay());
-    }
-        if (count >= 3){
-        console.log("You Win!"); 
-        } else if (count < 3){ 
-        console.log("You Lose!");
-        }
-        
-    }
-
-    console.log(count);
 
 
+document.getElementById("userscore").innerHTML = counter.player;
+document.getElementById("computerscore").innerHTML = counter.cpu;
 
-// console.log(oneRound('rock', computerPlay()));
-//  console.log(oneRound('rock', computerPlay()));
-game();
+// function endGame(x,y){
+//     if (x === 5){
+//         return ("You Win!");
+//     } else if (y ===5){
+//         console.log("You Lose!");
+//     }
+// };
+
+// function endGame(p1,p2);

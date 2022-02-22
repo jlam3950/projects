@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: roboto;
 }
 
 body{
@@ -10,12 +10,12 @@ body{
 }
 
 .header{
-    min-height: 100px;
+    min-height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3em;
-    background: dodgerblue;
+    background: rgb(243, 24, 24);
     color: #fff;
 }
 
@@ -26,13 +26,14 @@ body{
     align-items: center;
     gap: 50px;
     font-size: 2em;
-    min-height: 200px;
+    min-height: 100px;
+    padding: 2em;
     
 }
 
 .choices{
     min-height: 300px;
-    border: 5px #fff solid;
+    /* border: 5px #fff solid; */
     border-radius: 25px;
     margin:10px;
     display: flex;
@@ -40,4 +41,52 @@ body{
     align-items: center;
     font-size: 5em;
     gap: 1em;
+}
+
+#rock, #paper, #scissors{
+    font-size: 1.5em;
+    border: 2px #fff solid;
+    border-radius: 50%;
+    height: 80%;
+}
+
+
+ #rock:hover{
+    /* opacity: 50%; */
+    cursor: pointer;
+    transform: scale(1.2);
+    background-color: rgb(21, 230, 21);
+}
+
+ #paper:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    background-color: rgb(21, 230, 21);
+}
+
+ #scissors:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    color: red;
+    background-color: rgb(21, 230, 21);
+}
+.report{
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    font-weight: 2px;
+}
+
+.selection{
+    text-align: center;
+    font-size:1.5em;
+    font-style:italic;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+    margin-top: 125px;
+    color: black;
 }

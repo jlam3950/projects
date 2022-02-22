@@ -4,32 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src = "rps.js"></script>
+    <!-- <script src = "rps.js"></script> C'est la vie-->
     <title>Rock Paper Scissors</title>
     <link rel = "stylesheet" href = "rps.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <section class= "header">
         <h1>Rock, Paper, Scissors</h1>
     </section>
 
-    <section class = "container">
+    <section id = "container">
         <div class = "scoreboard">
-            <p>User</p>
-            <span>:</span>
-            <p>Computer</p>
+            <div> Player </div>
+            <p id = "userscore">User Score = 0</p>
+            <div> Computer </div>
+            <p id = "computerscore">Computer Score = 0</p>
+        </div>
+        <div class= 'selection'>
+            Choose Wisely...
         </div>
         <div class= "choices"> 
-            <p class = "rock">🪨</p>
-            <p class = "paper">📄</p>
-            <p class = "scissors">✂️</p>
+            <button type = "button" id ="rock">🪨</button>
+            <button type = "button" id ="paper">📄</button>
+            <button type = "button" id ="scissors">✂️</button>
         </div>
-        <div class = "results">
-            <p> You Win!</p>
-            <p> You Lose!</p>
-        </div>
+        
     </section>
-    
-    <script src = "rps.js"></script>
+
+    <footer class = "footer">
+        <div>
+             <h4> Made by Jeff Lamar©️ </h4>
+        </div>
+    </footer>
+
+    <script src = "rps.js"></script>      
 </body>
+
 </html>
