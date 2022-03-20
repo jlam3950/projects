@@ -14,18 +14,20 @@
 
 <body>
     <section class= "header">
-        <h1>Rock, Paper, Scissors</h1>
+        <div class="headerbox">
+             <h2>Rock, Paper, Scissors</h2>
+        </div>
     </section>
 
     <section id = "container">
         <div class = "scoreboard">
-            <div> Player </div>
-            <p id = "userscore">User Score = 0</p>
-            <div> Computer </div>
-            <p id = "computerscore">Computer Score = 0</p>
+            <div> Player: </div>
+            <p id = "userscore">0</p>
+            <div> Computer: </div>
+            <p id = "computerscore">0</p>
         </div>
         <div class= 'selection'>
-            Choose Wisely...
+            First one to five, wins. <b>Choose wisely...</b>
         </div>
         <div class= "choices"> 
             <button type = "button" id ="rock">🪨</button>
@@ -33,11 +35,12 @@
             <button type = "button" id ="scissors">✂️</button>
         </div>
         
+        <span id ="winner"></span>
     </section>
 
     <footer class = "footer">
         <div>
-             <h4> Made by Jeff Lamar©️ </h4>
+             <h4> Made by Jeff L©️ </h4>
         </div>
     </footer>
 
