@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src = "rps.js"></script> C'est la vie-->
+    <title>Rock Paper Scissors</title>
+    <link rel = "stylesheet" href = "rps.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class= "header">
+        <div class="headerbox">
+             <h2>Rock, Paper, Scissors</h2>
+        </div>
+    </section>
+
+    <section id = "container">
+        <div class = "scoreboard">
+            <div> Player: </div>
+            <p id = "userscore">0</p>
+            <div> Computer: </div>
+            <p id = "computerscore">0</p>
+        </div>
+        <div class= 'selection'>
+            First one to five, wins. <b>Choose wisely...</b>
+        </div>
+        <div class= "choices"> 
+            <button type = "button" id ="rock">🪨</button>
+            <button type = "button" id ="paper">📄</button>
+            <button type = "button" id ="scissors">✂️</button>
+        </div>
+        
+        <span id ="winner"></span>
+    </section>
+
+    <footer class = "footer">
+        <div>
+             <h4> Made by Jeff L©️ </h4>
+        </div>
+    </footer>
+
+    <script src = "rps.js"></script>      
+</body>
+
+</html>
