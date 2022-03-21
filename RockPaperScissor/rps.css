@@ -64,24 +64,32 @@ body{
 
 
  #rock:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
     cursor: pointer;
-    background-color: rgb(21, 230, 21);
+ }
+
+ #rock:active{
+     transform: translate(0, .1rem);
  }
 
  #paper:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
     cursor: pointer;
-    background-color: rgb(21, 230, 21);
-
  }
+
+ #paper:active{
+    transform: translate(0, .1rem);
+}
 
 
  #scissors:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
     cursor: pointer;
-    background-color: rgb(21, 230, 21);
  }
+
+ #scissors:active{
+    transform: translate(0, .1rem);
+}
   
 
 .report{
