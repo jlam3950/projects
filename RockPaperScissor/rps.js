@@ -51,9 +51,6 @@ function computerPlay(){
     return random; 
 }
 
-
-
-
 let counter = {
     player: 0,
     cpu: 0
@@ -107,11 +104,11 @@ function oneRound(playerSelection, computerSelection){
 }
 
 function endGame(){
-    if(counter.player == 5){
+    if(counter.player >= 5){
         win.innerHTML = "You Win! Play Again?";
         alert("You Win! Want to play again?");
         reset();
-    } else if (counter.cpu == 5){   
+    } else if (counter.cpu >= 5){   
         win.innerHTML = "You Lose! Try Again!";
         alert("You Lose! Don't give up yet!");
         reset();
