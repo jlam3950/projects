@@ -1,0 +1,20 @@
+body {
+	background-color: #34abd6;
+}
+
+.header h2 {
+	color: #DC4247;
+}
+
+.header p {
+	color: #50524F;
+}
+
+.results {
+	margin-top: 20px;
+}
+
+.watchlistLink{
+	padding-top: 1em;
+ 	margin-left: 85%;
+}
