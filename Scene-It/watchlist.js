@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
-//    let localStorageList = localStorage.getItem('watchlist')
+   let localStorageList = localStorage.getItem('watchlist')
    let watchlistJSON = localStorage.getItem('watchlist');
-   let watchlist = JSON.parse(watchlistJSON);
-    if (watchlist == null){
-        watchlist = [];
-    } 
-        // watchlist.push(movie);
-        watchlistJSON = JSON.stringify(watchlist);
-        // localStorage.getItem('watchlist', watchlistJSON);
+   let watchlist = JSON.parse(watchlistJSON); //converts into json string into an object, while json.stringify converts an object to a json string
+
+    moviesContainer.innerHTML = renderMovies(watchlist);
+        
   console.log(watchlist); 
-  moviesContainer.innerHTML = renderMovies(movieData)
+  console.log(JSON.parse(watchlistJSON));
 });
 
 const moviesContainer = document.querySelector('#movies-container');
