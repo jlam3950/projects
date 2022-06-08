@@ -36,6 +36,6 @@ const removeBtn = document.querySelector('#remove');
 removeBtn.addEventListener('click', ()=>{
     window.localStorage.clear();
     moviesContainer.innerHTML = '';
-})
+});
 
 
