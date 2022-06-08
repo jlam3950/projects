@@ -1,19 +1,21 @@
+
+
 document.addEventListener('DOMContentLoaded', function(){
    let localStorageList = localStorage.getItem('watchlist')
-   let watchlistJSON = localStorage.getItem('watchlist');
-   let watchlist = JSON.parse(watchlistJSON); //converts into json string into an object, while json.stringify converts an object to a json string
-
-    moviesContainer.innerHTML = renderMovies(watchlist);
-        
-  console.log(watchlist); 
-  console.log(JSON.parse(watchlistJSON));
+   let localList = JSON.parse(localStorageList); 
+   if (localList == null){
+    localList = [];
+}   
+   moviesContainer.innerHTML = renderMovies(localList);
+   
 });
 
 const moviesContainer = document.querySelector('#movies-container');
 
 function renderMovies(list){
+
     let listArray = list.map(listItem => {
-            return `<div class = "col-4 mb-3 mt-3">
+        return `<div class = "col-4 mb-3 mt-3">
                 <div class="card" style ="width:12rem"> 
                 <img src= "${listItem.Poster}" class ='card-img-top'>
                 <div class = 'card-body'>
@@ -24,9 +26,16 @@ function renderMovies(list){
                 </div>
             </div>`
     })
-    console.log(listArray);
     return listArray.join('');
 } 
 
+
+
+const removeBtn = document.querySelector('#remove');
+
+removeBtn.addEventListener('click', ()=>{
+    window.localStorage.clear();
+    moviesContainer.innerHTML = '';
+})
 
 

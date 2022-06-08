@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 });
 
-//last step - need to pass data.search from bottom function into saveWatchList
 
 function saveToWatchList(id){
-    const movie = movieData.find(currentMovie => {
+    const movie = apiData.find(currentMovie => {
         return currentMovie.imdbID == id;
     })
     
@@ -27,6 +26,7 @@ function saveToWatchList(id){
         watchlist.push(movie);
         watchlistJSON = JSON.stringify(watchlist);
         localStorage.setItem('watchlist', watchlistJSON);
+        console.log(watchlist);
 
 }
 
@@ -56,10 +56,13 @@ searchForm.addEventListener('submit', function(e){
     fetch("http://www.omdbapi.com/?apikey=59354c85&s=" + urlEncodedSearchString).then(res =>{
         return res.json(); 
     }).then(data => {
-        console.log(data.Search);
-        const movieHTML = renderMovies(data.Search);
+        apiData = data.Search;
+        console.log(apiData);
+        const movieHTML = renderMovies(apiData);
         moviesContainer.innerHTML = movieHTML; 
+        return apiData;
     }).catch(err => {
-        console.log('Error');
+        console.log(err);
     })
 })
+
