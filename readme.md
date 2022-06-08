@@ -1,1 +1,3 @@
-I will begin writing my projects here. 
+A handful of projects that I've been working on. 
+
+Lastest Update: Scene It 
