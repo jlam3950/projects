@@ -6,44 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeff's Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='styles.css'>
 </head>
-<body>
-   <section class="header">
-       <div class="header_logo">Jl</div>
-       <div class="nav">
-           <ul class="nav_list">
-               <li class="nav_item">
-                   <a href=" #about" class="nav_link">About</a>
-               </li>
-               <li class="nav_item">
-                   <a href=" #projects" class="nav_link">Projects</a>
-               </li>
-               <li class="nav_item">
-                   <a href=" #contact" class="nav_link">Contacts</a>
-               </li>
-               <li class="nav_item-icon">
-                   <a href="https://github.com/jlam3950" class="nav_link-icon">
+<!-- <section class="header">
+    <div class="header_logo"><i class= 'fas fa-cat'></i></div>
+    <div class="nav">
+        <ul class="nav_list">
+            <li class="nav_item">
+                <a href=" #about" class="nav_link">About</a>
+            </li>
+            <li class="nav_item">
+                <a href=" #projects" class="nav_link">Projects</a>
+            </li>
+            <li class="nav_item">
+                <a href=" #contact" class="nav_link">Contacts</a>
+            </li>
+            <li class="nav_item-icon">
+                <a href="https://github.com/jlam3950" class="nav_link-icon">
                     <i class = 'fab fa-github'></i>
-                   </a>
-               </li>
-           </ul>
-       </div>
-   </section>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section> -->
 
-   <div class="wrapper">
+<body class = 'active'>
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li class="nav_item">
+                    <a href=" #about" class="nav_link">About</a>
+                </li>
+                <li class="nav_item">
+                    <a href=" #projects" class="nav_link">Projects</a>
+                </li>
+                <li class="nav_item">
+                    <a href=" #contact" class="nav_link">Contacts</a>
+                </li>
+                <li class="nav_item-icon">
+                    <a href="https://github.com/jlam3950" class="nav_link-icon">
+                        <i class = 'fab fa-github'></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        
+        <div class="section header">
+            <!-- added header to inherit transparent background -->
+            <div class="top_navbar">
+                <div class="hamburger2">  
+                    <a href='#'>
+                        <i class = "fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>     
+
        <container class="content">
            <section class="hero_section">
                <div class="hero_container">
                    <div class="hero_content">
                     <h1 class="hero_heading">
-                        Jeff Lamar
+                        Jeff L.
                     </h1>
                     <p class="hero_subheading">
                         Front end web developer
                         </p>
                         <p class="hero_intro">
-                                Switching from healthcare to tech.
+                                Welcome to my portfolio website!
                         </p>
                         <a href="#projects" class="hero_btn">
                             <button class="projectsBtn">Projects</button>
@@ -51,10 +85,12 @@
                     </div>
                 </div>
            </section>
-           <section class="about">
+           <section class="about" id ='about'>
                <div class="about_container">
-                   <div class="about_heading">
-                       About Me
+                   <div class="about_heading">    
+                        <h2>
+                             About Me
+                        </h2>         
                    </div>
                    <p class="about_paragraph">
                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In, similique facilis consectetur minima non sequi voluptatum itaque, repudiandae excepturi rem id repellendus esse doloribus ea, fugit doloremque suscipit consequatur recusandae inventore maxime nihil nulla quis aspernatur explicabo? Reiciendis cumque illum natus explicabo delectus iusto inventore temporibus, non numquam, autem rerum.
@@ -66,26 +102,27 @@
                        <div class="profile_img">
                            <img src= "">
                        </div>
-                       <h4 class="profile_sub">Qualifications</h4>
+                       <h3 class="profile_sub">Qualifications</h3>
                         <div class="profile_info"> 
                             <!-- maybe use span for these tags -->
                             <p>Bachelor of Science</p> 
                             <p>Doctorate of Physical Therapy</p>
                             <p>Digital Crafts Fullstack Certification</p>
                         </div>
-                        <h4 class="profile_skills_header">Experience:</h4>
+                        <h4 class="profile_skills_header">Skills:</h4>
                         <div class="profile_skills">
                             <ul>
                                 <li class="skill">HTML</li>
                                 <li class="skill">CSS</li>
                                 <li class="skill">JavaScript</li>
                                 <li class="skill">Node/Express</li>
+                                <li class="skill">PostgreSQL</li>
                             </ul>
                         </div>
                    </div>
                </div>
            </section>
-           <section class="projects">
+           <section class="projects" id ='projects'>
                <div class="projects_container">
                    <h2 class="projects_header">
                        Projects
@@ -97,24 +134,30 @@
                     <div class="projectCard">
                         <h3 class="card_header">Canoe</h3>
                         <p class="card_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, eum?</p>
-                        <img>
+                        <img src ="christina-deravedisian-VDOhTPhJZb0-unsplash.jpg" alt='projectCardPhoto'>
                         <!-- Add Image Card Here -->
                     </div>
                     <div class="projectCard">
                         <h3 class="card_header">Scene It</h3>
                         <p class="card_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, eum?</p>
-                        <img>
+                        <img src ="christina-deravedisian-VDOhTPhJZb0-unsplash.jpg" alt='projectCardPhoto'>
+                        <!-- Add Image Card Here -->
+                    </div>
+                    <div class="projectCard">
+                        <h3 class="card_header">Climb Together</h3>
+                        <p class="card_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, eum?</p>
+                        <img src ="christina-deravedisian-VDOhTPhJZb0-unsplash.jpg" alt='projectCardPhoto'>
                         <!-- Add Image Card Here -->
                     </div>
                 </div>
                </div>
            </section>
         
-           <section class="contact">
+           <section class="contact" id = 'contact'>
                <div class="contact_container">
-                   <h3 class="contact_header">
+                   <h2 class="contact_header">
                        Contact Me
-                   </h3>
+                   </h2>
                    <p class="contact_text">
                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, cum.
                    </p>
@@ -122,11 +165,15 @@
                </div>
            </section>
        </container>
+
+   <section class="footer">
+       <div class="footer_container">
+           ©Jeff L. 2022
+       </div>
+   </section>
+
    </div>
+   <script src="portfolio.js"></script>
 
-   <section class="footer"></section>
-
-
-    
 </body>
 </html>

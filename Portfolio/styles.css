@@ -1,25 +1,58 @@
+
+:root {
+    --margin-sm: 0.5rem;
+    --margin-md: 1rem;
+    --margin-lg: 2rem;
+    --margin-xl: 4rem;
+    --fs--xxs: 1rem;
+    --fs-xs: 1.2rem;
+    --fs-sm: 1.4rem;
+    --fs-md: 1.6rem;
+    --fs-lg: 2.3rem;
+    --fs-xl: 3rem;
+    --hs-xs: 1.5rem;
+    --hs-sm: 2rem;
+    --hs-md: 3rem;
+    --hs-lg: 4.7rem;
+    --hs-xl: 6.1rem;
+
+    --padding-desktop: 5rem 10rem;
+    --padding-mobile: 5rem 2rem;
+}
+
 *{
     box-sizing: border-box;
 }
 
+body{
+    font-family: 'Roboto Slab', serif;
+    background-color: rgb(20,30,48);
+    margin: 0;
+}
+
 .header{
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     /* align-items: center; */
     position: absolute;
-    padding: 0 2rem;
+    padding: 0 1rem;
     width: 100%;
     height: 10rem;
     z-index: 2;
     max-width: 100rem; 
-    background-color: transparent;
-    border: 2px solid black;
+    color: white;
+    /* background-color: transparent; */
+    /* border: 2px solid black; */
 }
 
 .header_logo{
     margin-left: .2rem;
     margin-top: 1rem;
     font-size: 1.5rem;
+}
+
+.nav_list > li{
+    list-style-type: none;
 }
 
 .content{
@@ -35,10 +68,12 @@
     z-index: 1;
     max-width: 100rem;
     margin: 0 auto;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     line-height: .5;
     height: 100vh;
     background-size: cover;
+    background-image: url(christina-deravedisian-VDOhTPhJZb0-unsplash.jpg); 
+    /* background-image: url(olena-sergienko-6FdG9OL6JLI-unsplash.jpg); */
     padding: 2rem;
     /* make padding responsive; */
 }
@@ -50,33 +85,271 @@
 
 .hero_heading{
     font-size: 3rem;
-    display: block;
+    font-weight: 700;
+    font-style: bold;
 }
 
 .hero_subheading{
     font-size: 1.5rem;
-    font-weight: 525;
+    font-weight: 600;
+    font-style: bold;
 }
 
 .hero_intro{
-    font-size: 1.1rem;
-    font-weight: 200;
+    font-size: 1.2rem;
+    font-weight: 400;
     line-height: 1;
 }
 
 .projectsBtn{
-    padding: .5rem;
-    border-radius: 15px;
+    padding: 1rem;
+    border-radius: 25px;
     position: relative;
+    background-color: rgb(46, 46, 189);
+    font-weight: 200;
+    color: white;
+}
+
+.projectsBtn:hover{
+    cursor: pointer;
 }
 
 /* About */
 
 .about_container{
+    background-color: rgb(20,30,48);
     display: flex;
-    justify-content: center;
+    justify-content: center;   
     flex-wrap: wrap;
     padding: 2rem;
     max-width: 100rem;
+    color: white;
     /* align-items: flex-start; */
 }
+
+.about_heading{
+    text-align: center;
+}
+
+.about_heading > h2{
+    font-weight: 550;
+    font-size: 2rem;
+}
+
+.about_paragraph{
+    line-height: 1.5;
+}
+
+.profile_card{
+    border-radius: 10px; 
+    background: linear-gradient(to left top, rgb(20, 30, 48), rgba(227, 227, 227, 0.3));
+    padding: 0 2rem;
+    margin-top: 4em;
+}
+
+.profile_sub{
+    text-align: center;
+}
+
+.profile_info{
+    margin: 2rem auto;
+}
+
+/* Projects */
+
+.projects_container{
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    color: white;
+}
+
+.projects_header{
+    font-weight: 550;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.projects_header > p{
+    display: block;
+    line-height: 1.5;
+    /* check this later */
+}
+
+.projectCard{
+    border-radius: 10px; 
+    background: linear-gradient(to left top, rgb(20, 30, 48), rgba(227, 227, 227, 0.3));
+    padding: 1rem 1rem;
+    margin: 2.5rem 0;
+    /* add max width for responsiveness */
+}
+
+.projectCard > img{
+    height: 15rem;
+    width: 17rem;
+    border-radius: 5px;
+}
+
+
+/* contacts */
+
+.contact_container{
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact_container > button{
+    margin: 0 auto;
+    width: 100px;
+    padding: .5rem;
+    border-radius: 5px;
+    position: relative;
+    background-color: rgb(228, 93, 93);
+    color: white;
+
+}
+
+.contact_text{
+    margin-bottom: 2rem;
+}
+
+.contact_header{
+    font-weight: 550;
+    font-size: 2rem;
+    text-align: center;
+}
+
+h2:after{ 
+    content: '';
+    display: block;
+    width: 300px;
+    height: 1px;
+    background: rgb(252, 250, 250);
+    margin: 0.5em auto;
+}
+
+.footer_container{
+    color: white;
+    text-align:center;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+}
+
+/* sidebar */
+
+.sidebar > ul > li{
+    text-decoration: none;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.top_navbar{
+    display:flex;
+    justify-content: end;
+}
+
+.wrapper .sidebar{
+    background: rgb(20,30,48);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    /* edit the padding later */
+    padding-bottom: 150px;
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.wrapper .sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: rgb(241, 237, 237);
+    font-size: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper .sidebar ul li a .icon{
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+    color: #0c7db1;
+    background:white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+    color: #0c7db1;
+}
+
+.wrapper .sidebar ul li a:hover::before,
+.wrapper .sidebar ul li a.active::before{
+    display: block;
+}
+
+.wrapper .section{
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar{
+    /* background: rgb(7, 105, 185); */
+    /* background-color: transparent;
+    z-index: 2;
+    max-width: 100rem;  */
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+
+}
+
+.hamburger2{
+    margin-top: 2rem;
+}
+
+.wrapper .section .top_navbar .hamburger2 a{
+    font-size: 40px;
+    /* color: #f4fbff; */ 
+    /* check this later */
+    color: #000;
+}
+
+.wrapper .section .top_navbar .hamburger2 a:hover{
+    /* color: #a2ecff; */
+}
+
+body.active .wrapper .sidebar{
+    left: -225px;
+}
+
+body.active .wrapper .section{
+    margin-left: 0;
+    width: 100%;
+}
+
+
+
+
