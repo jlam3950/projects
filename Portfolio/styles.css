@@ -45,6 +45,28 @@ body{
     /* border: 2px solid black; */
 }
 
+.navbar_hero{
+    margin: 0 auto;
+    margin-top: 3rem;
+    visibility: hidden;
+}
+
+.navbar_hero > ul{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 1.6rem;
+}
+
+.navbar_hero > ul > li > a {
+    color: #000;
+}
+
+
+.navbar_hero > ul > li{
+    list-style-type: none;
+}
+
 .header_logo{
     margin-left: .2rem;
     margin-top: 1rem;
@@ -55,6 +77,10 @@ body{
     list-style-type: none;
 }
 
+.hamburger2{
+    color: #000;
+}
+
 .content{
     height: 100%;
     width: 100%;
@@ -62,57 +88,71 @@ body{
 
 .hero_container{
     position: relative;
-    /* maybe take out display flex, JC:center */
     display: flex;
     justify-content: center;
     z-index: 1;
-    max-width: 100rem;
+    /* max-width: 100rem; */ 
+    /* check this out again */
     margin: 0 auto;
-    /* border: 2px solid black; */
     line-height: .5;
     height: 100vh;
     background-size: cover;
     background-image: url(christina-deravedisian-VDOhTPhJZb0-unsplash.jpg); 
-    /* background-image: url(olena-sergienko-6FdG9OL6JLI-unsplash.jpg); */
     padding: 2rem;
     /* make padding responsive; */
 }
 
 .hero_content{
     position: relative;
-    top: 25%;
+    top: 20%;
 }
 
 .hero_heading{
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 3.6rem;
+    font-weight: 500;
     font-style: bold;
+    margin-bottom: 2rem;
+    padding-top: .5rem;
 }
 
 .hero_subheading{
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 700;
     font-style: bold;
 }
 
 .hero_intro{
     font-size: 1.2rem;
     font-weight: 400;
-    line-height: 1;
 }
 
 .projectsBtn{
+    position: relative;
+    width: 40%;
     padding: 1rem;
     border-radius: 25px;
-    position: relative;
-    background-color: rgb(46, 46, 189);
-    font-weight: 200;
-    color: white;
+    border: none;
+    background-color: rgb(62, 62, 211);
+    font-weight: 400;
+    font-size: 1rem;
+    color: #fff;
+    margin-top: .8rem;
+    /* left: 33%; */
 }
 
 .projectsBtn:hover{
     cursor: pointer;
 }
+
+@media screen and (min-width: 800px){
+    .hamburger2{
+        visibility: hidden;
+    } 
+    
+    .navbar_hero{
+        visibility: visible;
+    }
+} 
 
 /* About */
 
@@ -151,16 +191,26 @@ body{
     text-align: center;
 }
 
-.profile_info{
+/* .profile_info{
     margin: 2rem auto;
-}
+} */
 
 /* Projects */
 
-.projects_container{
+/* .projects_container{
     margin: 0 auto;
     padding: 2rem;
     width: 100%;
+    color: white;
+    max-width: 100rem;
+} */
+
+.projects_container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 100rem;
     color: white;
 }
 
@@ -168,22 +218,29 @@ body{
     font-weight: 550;
     font-size: 2rem;
     margin-top: 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
 .projects_header > p{
     display: block;
-    line-height: 1.5;
+    line-height: 1.2;
     /* check this later */
 }
 
 .projectCard{
     border-radius: 10px; 
     background: linear-gradient(to left top, rgb(20, 30, 48), rgba(227, 227, 227, 0.3));
-    padding: 1rem 1rem;
+    padding: .5rem 1rem;
     margin: 2.5rem 0;
+    line-height: 1.2;
     /* add max width for responsiveness */
+}
+
+
+
+.card_header{
+    font-size: 1.6rem;
 }
 
 .projectCard > img{
@@ -192,6 +249,46 @@ body{
     border-radius: 5px;
 }
 
+@media screen and (min-width: 800px){
+    /* .about_container .projects_container{
+    } */
+    .projectCard{
+        width: 65%;
+        margin: 4rem auto;
+        padding: 0 1rem;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile_card{
+        width: 65%;
+        padding: 0 1rem;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile_info{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .projectCard > img{
+        height: 15rem;
+        width: 23rem;
+        margin-top: 2rem;
+    }
+
+    .about_container,
+    .projects_container,
+    .contact_container{
+        margin: 0 4rem;
+    }
+} 
 
 /* contacts */
 
@@ -202,6 +299,7 @@ body{
     color: white;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .contact_container > button{
@@ -223,6 +321,7 @@ body{
     font-weight: 550;
     font-size: 2rem;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 h2:after{ 
@@ -257,6 +356,7 @@ a{
     display:flex;
     justify-content: end;
 }
+
 
 .wrapper .sidebar{
     background: rgb(20,30,48);
@@ -327,7 +427,7 @@ a{
 }
 
 .hamburger2{
-    margin-top: 2rem;
+    margin-top: 1.6rem;
 }
 
 .wrapper .section .top_navbar .hamburger2 a{

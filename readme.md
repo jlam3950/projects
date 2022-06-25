@@ -1,3 +1,3 @@
-A handful of projects that I've been working on. 
+Here are some of the projects that I have been working on. 
 
 Lastest Update: Scene It 
