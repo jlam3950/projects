@@ -1,9 +1,14 @@
 const express = require('express');
+const spotifyRoutes = require('./src/spotify/routes')
 const app = express();
 const PORT = 3000; 
+
+app.use(express.json());
 
 app.get("/", (req,res) => {
     res.send("Hello World");
 });
 
-app.listen(port, () => console.log(`listening on port ${PORT}`)); 
+app.use('/api/spotify', spotifyRoutes);
+
+app.listen(PORT, () => console.log(`listening on port ${PORT}`)); 
