@@ -4,11 +4,18 @@ const app = express();
 const PORT = 3000; 
 
 app.use(express.json());
-
 app.set('view engine', 'ejs');
 
-app.get('/', (req,res) => {
-    res.send()
+app.get('/login', (req,res) => {
+    res.render('login');
+})
+
+app.get('/home', (req,res) => {
+    res.render('home');
+})
+
+app.get('/about', (req,res) => {
+    res.render('views');
 })
 
 app.get('/', (req,res) => {
