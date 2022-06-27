@@ -15,3 +15,5 @@ CREATE TABLE weather_static (
     weather_type VARCHAR(50) NOT NULL, 
     -- will add preset info here 
 )
+
+-- Consider creating a table with recent searches 

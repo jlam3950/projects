@@ -5,7 +5,13 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.get("/", (req,res) => {
+app.set('view engine', 'ejs');
+
+app.get('/', (req,res) => {
+    res.send()
+})
+
+app.get('/', (req,res) => {
     res.send("Hello World");
 });
 
