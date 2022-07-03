@@ -1,0 +1,1 @@
+"An app that utilizes a weather API and the Spotify API to create personalized music recommendations."
