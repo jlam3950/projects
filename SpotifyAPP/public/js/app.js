@@ -4,11 +4,11 @@ const sunny = document.getElementById('sunny');
 const hipHop = document.getElementById('hipHop');
 const subBtn = document.getElementById('submit');
 const weatherContainer = document.getElementById('forecast');
+// import {myKey} from views/search.ejs; 
 
 let param1;
 let param2;
 let genre; 
-
 
 async function getWeather(){
     const address = searchBar.value; 
@@ -87,6 +87,7 @@ sunny.addEventListener('click', function(){
     
     
 async function callRec(tr, pop, genre) {
+
     // need access_token for request
     const url = `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&max_popularity=${pop}&seed_genres=${genre}`;
     try {

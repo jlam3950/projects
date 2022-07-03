@@ -45,6 +45,13 @@ app.get('/authorize', (req,res) => {
     res.redirect("http://accounts.spotify.com/authorize?" + auth_query_parameters.toString());
 });
 
+// app.get('/key', (req,res) => {
+//     const key = {
+//         spotifyKey: access_token
+//       }
+//     res.json(key)
+// })
+
 app.get('/callback', async (req,res) => {
     
     const code = req.query.code; 
@@ -67,8 +74,9 @@ app.get('/callback', async (req,res) => {
 
     const data = await response.json(); 
     access_token = data.access_token;
+    console.log(access_token);
+    
     // localStorage.setItem('token', access_token);
-   
     res.redirect('search');
 });
 
@@ -79,7 +87,7 @@ async function endPointData(endpoint){
             Authorization: 'Bearer ' + access_token
         }
     });
-    console.log('Bearer ' + access_token);
+    // console.log('Bearer ' + access_token);
     //consider pushing information to db, create function (take response)
     const data = await response.json();
     return data;
@@ -91,8 +99,13 @@ app.get('/search', async (req,res) => {
     const recInfo = await endPointData('/recommendations');
     // console.log(userInfo);
      //consider inserting into db, pull
-    res.render('search', { user: userInfo });
+    const key = {
+       spotifyKey: access_token
+     }
+    res.render('search', { user: userInfo, k: key});  
 });
+
+
 
                         
 app.listen(PORT, () => console.log(`listening on port ${PORT}`)); 

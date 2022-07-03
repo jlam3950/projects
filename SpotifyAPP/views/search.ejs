@@ -2,6 +2,9 @@
 <body>
 
     <h1>Hi, <%= user.display_name %>. Welcome to Weatherify</h1>
+    <h2>HERES MY KEY <%= JSON.stringify(k.spotifyKey) %> </h2>
+
+  
     
     <p> Enter a zip code, and click on the forecast to get some music recommendations!</p>
     <label for = 'search bar'>Enter Zip:</label>
@@ -28,6 +31,11 @@
     </div>
 
 <%- include('./partials/script') -%>
+<script>
+    // export const myKey = JSON.stringify(k.spotifyKey) 
+    // const myKey = JSON.stringify(k.spotifyKey) 
+    // console.log(myKey);
+</script>
 
 </body>
 </html>
