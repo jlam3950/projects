@@ -3,8 +3,14 @@ const searchBtn = document.getElementById('searchBtn');
 const sunny = document.getElementById('sunny');
 const hipHop = document.getElementById('hipHop');
 const subBtn = document.getElementById('submit');
-const weatherContainer = document.getElementById('forecast');
-// import {myKey} from views/search.ejs; 
+const weatherContainer = document.getElementById('forecast_container');
+ 
+// const { myKey } = require('./views/search.ejs');
+// // import { myKey } from 'search.ejs'
+// console.log(myKey);
+
+// import { myKey } from '.views/search.ejs'
+// console.log(myKey);
 
 let param1;
 let param2;
@@ -53,19 +59,65 @@ function forecastAPI(data){
     })
 }
 
+let weeklyForecast = [];
+
 function forecastRender(forecastData){
     forecastData.forEach((day , index) => {
+    
         if(index % 2 == 0){
+            // console.log(weeklyDate);
         weatherContainer.innerHTML += 
-        `<div class = weatherCard>
+        `<div class = weatherCard id = "${day.shortForecast}">
         <p> ${day.name} </p>
-        <p> ${day.shortForecast} </p>
+        <div> ${day.shortForecast} </div>
         <p> ${day.temperature} </p>
-        <img src="${day.icon}">`
-
+        <img src="${day.icon}">
+        `
+        
+        // weatherContainer.innerText = `${day.shortForecast}`;
+        weeklyForecast.push(day);
         }
     })
+    // function shortenDay(x) {
+        //     if (x.name.hasOwnProperty(' ')) {
+            //         return x.name.slice(0, (day.name.indexOf(' ') + 1));
+            //     }
+            // }
 }
+
+console.log(weeklyForecast);
+        
+weatherContainer.addEventListener('click', function(e){
+    if(e.target.classList.contains('weatherCard')){
+        let temp = (e.target.getAttribute('id').split(' '));
+        console.log(temp);
+        tempParse(temp);
+    }
+});
+
+function tempParse(temperature){
+    //why does this work
+    for(temp of temperature){
+        switch(temp){
+            case 'Mostly':
+                temp = 'Sunny';
+                console.log(temp);
+                break;
+        }
+    }
+    console.log(temp);
+}
+
+// function weatherParameters(x){
+//     switch(x){
+//         case "sunny":
+//             param1 = '0c6xIDDpzE81m2q797ordA';
+//             param2 ='90';
+//             genre= 'classical';
+//         case "rainy":
+//         case "cloudy":
+//     }
+// }
 
 searchBtn.addEventListener('click', function(e){
     e.preventDefault()
@@ -87,7 +139,6 @@ sunny.addEventListener('click', function(){
     
     
 async function callRec(tr, pop, genre) {
-
     // need access_token for request
     const url = `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&max_popularity=${pop}&seed_genres=${genre}`;
     try {
@@ -111,3 +162,4 @@ subBtn.addEventListener('click', function(e){
     callRec(param1,param2,genre)
 });
 // https://api.spotify.com/v1/recommendations?seed_tracks=0c6xIDDpzE81m2q797ordA&limit=10&max_popularity=90&seed_genres='classical'
+

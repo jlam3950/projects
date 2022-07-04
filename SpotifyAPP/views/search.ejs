@@ -1,41 +1,44 @@
 <%- include('./partials/meta') -%>
 <body>
 
-    <h1>Hi, <%= user.display_name %>. Welcome to Weatherify</h1>
-    <h2>HERES MY KEY <%= JSON.stringify(k.spotifyKey) %> </h2>
-
-  
-    
-    <p> Enter a zip code, and click on the forecast to get some music recommendations!</p>
-    <label for = 'search bar'>Enter Zip:</label>
-    <input type = 'text' id ='searchBar'>
-    <div>
-        <button id = 'searchBtn'>Submit</button>
+    <div class="title_container">
+        <h1>Weatherify </h1>
     </div>
+    <hr>
+    <!-- <h2>HERES MY KEY  JSON.stringify(k.spotifyKey) </h2>
+     -->
+     <div class="content_container">
+         <h2>Hi, <%= user.display_name %>!</h2>
+         <h3> Enter your zip code for personalized music recommendations</h3>
+         <label for = 'search bar'>Enter Zip:</label>
+         <input type = 'text' id ='searchBar'>
+         <div>
+             <button id = 'searchBtn'>Submit</button>
+         </div>
+     
+         <div id = 'forecast_container'>
+             <div>
+                 <p>Select your temperature</p>
+                 <span id='sunny'>Sunny</span>
+            </div>
+        </div>
+        
+       
+        <div id='hipHop'>Hip Hop</div>
+     
+         <div>
+             <button id = 'submit'>Submit</button>
+         </div>
+     </div>
+     
 
-
-    <div>
-        <p>Select your temperature</p>
-        <span id='sunny'>Sunny</span>
-    </div>
-
-    <container id = 'forecast'>
-    </container>
-    
-    <div>
-        <span id='hipHop'>Hip Hop</span>
-    </div>
-
-    <div>
-        <button id = 'submit'>Submit</button>
-    </div>
-
-<%- include('./partials/script') -%>
-<script>
-    // export const myKey = JSON.stringify(k.spotifyKey) 
-    // const myKey = JSON.stringify(k.spotifyKey) 
-    // console.log(myKey);
-</script>
+    <script type = 'module'>
+        // export const myKey = JSON.stringify(k.spotifyKey) 
+        // export const myKey = <%- JSON.stringify(k.spotifyKey) %>
+        // console.log(myKey);
+        // console.log(myKey);
+    </script>
+        <%- include('./partials/script') -%>
 
 </body>
 </html>
