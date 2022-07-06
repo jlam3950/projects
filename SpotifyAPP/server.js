@@ -74,8 +74,7 @@ app.get('/callback', async (req,res) => {
 
     const data = await response.json(); 
     access_token = data.access_token;
-    console.log(access_token);
-    
+    // console.log({access_token});
     // localStorage.setItem('token', access_token);
     res.redirect('search');
 });
@@ -97,13 +96,16 @@ app.get('/search', async (req,res) => {
 
     const userInfo = await endPointData('/me');
     const recInfo = await endPointData('/recommendations');
-    // console.log(userInfo);
-     //consider inserting into db, pull
+
     const key = {
        spotifyKey: access_token
      }
     res.render('search', { user: userInfo, k: key});  
 });
+
+app.get('/accesstoken', (req,res) =>{
+    res.send({access_token});
+})
 
 
 
