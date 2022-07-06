@@ -1,9 +1,16 @@
+// const { default: fetch } = require("node-fetch");
+
 const searchBar = document.getElementById('searchBar');
 const searchBtn = document.getElementById('searchBtn');
 const sunny = document.getElementById('sunny');
 const hipHop = document.getElementById('hipHop');
 const subBtn = document.getElementById('submit');
 const weatherContainer = document.getElementById('forecast_container');
+const instructions = document.getElementById('instructions');
+const trackContainer = document.getElementById('track_container');
+const favorite = document.querySelector('.favoritesBtn');
+const key = document.querySelector('.secret');
+
  
 // const { myKey } = require('./views/search.ejs');
 // // import { myKey } from 'search.ejs'
@@ -15,6 +22,8 @@ const weatherContainer = document.getElementById('forecast_container');
 let param1;
 let param2;
 let genre; 
+// let value = key.innerText; 
+// console.log(value);
 
 async function getWeather(){
     const address = searchBar.value; 
@@ -59,23 +68,25 @@ function forecastAPI(data){
     })
 }
 
-let weeklyForecast = [];
 
 function forecastRender(forecastData){
     forecastData.forEach((day , index) => {
+
+        // if((day.name).hasOwnProperty(' ')){
+        //             day.name = 'Today';
+        //         }
+            
+        // day.name.replace(/Tonight/i, ' ')
+        // console.log(day.name);
     
+        
         if(index % 2 == 0){
-            // console.log(weeklyDate);
+
         weatherContainer.innerHTML += 
         `<div class = weatherCard id = "${day.shortForecast}">
-        <p> ${day.name} </p>
-        <div> ${day.shortForecast} </div>
-        <p> ${day.temperature} </p>
-        <img src="${day.icon}">
-        `
-        
-        // weatherContainer.innerText = `${day.shortForecast}`;
-        weeklyForecast.push(day);
+        <p class ='dailyName'> ${(day.name).slice(0,3)} </p>
+        <p class = 'dailyTemp'> ${day.temperature}° </p>
+        <img class = 'dailyImg' src="${day.icon}">`        
         }
     })
     // function shortenDay(x) {
@@ -85,81 +96,121 @@ function forecastRender(forecastData){
             // }
 }
 
-console.log(weeklyForecast);
-        
+/* <div> $day.shortForecast </div> */
+// was on line 73 with template literal 
+
 weatherContainer.addEventListener('click', function(e){
     if(e.target.classList.contains('weatherCard')){
+        trackContainer.innerHTML = '';
         let temp = (e.target.getAttribute('id').split(' '));
-        console.log(temp);
+        // console.log(temp);
         tempParse(temp);
     }
 });
 
 function tempParse(temperature){
-    //why does this work
     for(temp of temperature){
         switch(temp){
             case 'Mostly':
                 temp = 'Sunny';
                 console.log(temp);
+                weatherParameters(temp);
                 break;
-        }
+            case 'Chance':
+                temp = 'Thunderstorms';
+                console.log(temp);
+                break;
+            case 'Partly':
+                temp = 'Cloudy';
+                console.log(temp);
+                break;
+        }  
+        
+        weatherParameters(temp);
+    } 
+} 
+
+function weatherParameters(temp){
+    switch(temp){
+        case "Sunny":
+            param1 = '0c6xIDDpzE81m2q797ordA';
+            param2 ='90';
+            genre= 'classical';
+            callRec(param1,param2,genre);
+            break;
     }
-    console.log(temp);
 }
 
-// function weatherParameters(x){
-//     switch(x){
-//         case "sunny":
-//             param1 = '0c6xIDDpzE81m2q797ordA';
-//             param2 ='90';
-//             genre= 'classical';
-//         case "rainy":
-//         case "cloudy":
-//     }
-// }
-
-searchBtn.addEventListener('click', function(e){
-    e.preventDefault()
-    weatherContainer.innerHTML = '';
-    getWeather();
-});
-
-sunny.addEventListener('click', function(){
-    console.log('hi');
-    param1 = '0c6xIDDpzE81m2q797ordA';
-    param2 ='90';
-    genre= 'classical';
-    sunny.style.background = 'red';
-});
-
-// hipHop.addEventListener('click', function(){
-    //     genre += 'hip-hop';
-    // })
-    
-    
 async function callRec(tr, pop, genre) {
     // need access_token for request
     const url = `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&max_popularity=${pop}&seed_genres=${genre}`;
+
+    // console.log(value);
     try {
+        const accessToken = await fetch('/accesstoken');
+        const stringifyToken = await accessToken.json();
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                Authorization: 'Bearer ' + 'BQCHq7i9HCe_QYCdGQbbn_ipUT6rC5BLarrA6iYvqYrbrWIo01LZSabB5c7w1TFCKQhoIb0rINVeDgShNiXDurj52Z14lY2XrQCcWhz2XbfJ_nBaAhpm-g_VLYWM94nFLrYOrX6yRkdLRJgdw4THQfKI310ewP3ZVNQbWYqPK44Uea4t0yVDWgDaKhxEY90xNQ'
+                Authorization: 'Bearer ' + stringifyToken.access_token
+                // Authorization: 'Bearer ${value}'
             }
         });
 
         const data = await response.json();
-        console.log(data);
-        console.log(data.tracks[0]);
+        console.log(data.tracks);
+        // console.log(data.tracks[0]);
+        renderTracks(data.tracks);
+        
     } catch (error) {
         console.log(error);
     }
 }
-    
-subBtn.addEventListener('click', function(e){
+
+function renderTracks(tracks){
+    console.log(tracks);
+    for(track of tracks){
+        // if(track.preview_url === 'null'){
+        //     Come back to this
+        // }
+        trackContainer.innerHTML +=
+        `<div class= 'songContainer'>
+        <div>
+        <img id ='albumArt' src =${track.album.images[0].url}>
+        </div>
+        <div>
+        </div> 
+        <a href=${track.preview_url}>Preview</a>
+        <i class="fa-solid fa-heart-circle-plus favoritesBtn"></i>
+        </div>       
+        `
+        }    
+    }
+
+        // <div class = 'songArtist'>
+        //     Artist:${track.artists[0].name}
+        // </div>
+        // <div>
+        //     Song:${track.name}
+        // </div>
+
+searchBtn.addEventListener('click', function(e){
+    instructions.style.visibility = 'hidden';
     e.preventDefault()
-    callRec(param1,param2,genre)
+    weatherContainer.innerHTML = '';
+    trackContainer.innerHTML = '';
+    getWeather();
+    instructions.style.visibility = 'visible'; 
 });
-// https://api.spotify.com/v1/recommendations?seed_tracks=0c6xIDDpzE81m2q797ordA&limit=10&max_popularity=90&seed_genres='classical'
+
+// favorite.addEventListener('click', function(){
+//     favorite.style.color = 'red';
+
+//     if(e.target.classList.contains('fa-solid fa-heart-circle-plus favoritesBtn')){ 
+//         let  favoriteId = e.target; 
+//         // save  to DB 
+//         return favoriteId; 
+//     }
+// })
+
 
