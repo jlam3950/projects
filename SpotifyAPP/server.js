@@ -20,13 +20,13 @@ const secret = process.env.CLIENT_SECRET;
 let access_token;
 
 app.get('/', (req,res) => {
-    pool.query('SELECT * FROM users', (err,res)=>{
-        if(!err){
-            console.log(res.rows);
-        }else{
-            console.log(err);
-        }
-    });
+    // pool.query('SELECT * FROM users', (err,res)=>{
+    //     if(!err){
+    //         console.log(res.rows);
+    //     }else{
+    //         console.log(err);
+    //     }
+    // });
     res.render('index');
 })
 
@@ -44,13 +44,6 @@ app.get('/authorize', (req,res) => {
     })
     res.redirect("http://accounts.spotify.com/authorize?" + auth_query_parameters.toString());
 });
-
-// app.get('/key', (req,res) => {
-//     const key = {
-//         spotifyKey: access_token
-//       }
-//     res.json(key)
-// })
 
 app.get('/callback', async (req,res) => {
     

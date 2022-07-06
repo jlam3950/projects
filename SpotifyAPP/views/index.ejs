@@ -1,18 +1,27 @@
  <%- include('./partials/meta') -%>
+ <style>
+    body{
+      background: url('../public/static/alphacolor-66JMudIjDTw-unsplash.jpg') center fixed;
+      background-size: cover;
+      width: 100%;
+    }
+</style>
 <body>
 
     <div class = 'title_container'>
-        <div>
-            <h1>Weatherify </h1>
+        <div class = 'splash_title'>
+            <h1>Weatherify <i class="fa-brands fa-spotify"></i></h1>
         </div>
-        <div class = title_logo>
+        <div class = 'splash_info'>
+            <h2> Playlists created for you based on the weather.</h2>
+        </div>  
+        <div class="login_container">
+            <button class = 'authBtn'><a href= '/authorize' class ='auth'>Login to Spotify</a></button>
+        </div>
+        <!-- <div class = title_logo>
             <i class="fa-brands fa-spotify"></i>
-        </div>
-    </div>
-    <hr>
-    <div class="login_container">
-        <a href= '/authorize' class ='auth'>Login to Spotify</a>
-    </div>
+        </div> -->
+    <!-- <hr> -->
     
 </body>
 </html>

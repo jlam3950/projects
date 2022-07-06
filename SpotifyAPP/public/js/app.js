@@ -1,5 +1,3 @@
-// const { default: fetch } = require("node-fetch");
-
 const searchBar = document.getElementById('searchBar');
 const searchBtn = document.getElementById('searchBtn');
 const sunny = document.getElementById('sunny');
@@ -8,10 +6,8 @@ const subBtn = document.getElementById('submit');
 const weatherContainer = document.getElementById('forecast_container');
 const instructions = document.getElementById('instructions');
 const trackContainer = document.getElementById('track_container');
-const favorite = document.querySelector('.favoritesBtn');
 const key = document.querySelector('.secret');
 
- 
 // const { myKey } = require('./views/search.ejs');
 // // import { myKey } from 'search.ejs'
 // console.log(myKey);
@@ -180,7 +176,7 @@ function renderTracks(tracks){
         </div>
         <div>
         </div> 
-        <a href=${track.preview_url}>Preview</a>
+        <a href=${track.preview_url}>${track.preview_url ? 'Preview' : ''}</a>
         <i class="fa-solid fa-heart-circle-plus favoritesBtn"></i>
         </div>       
         `
@@ -203,14 +199,32 @@ searchBtn.addEventListener('click', function(e){
     instructions.style.visibility = 'visible'; 
 });
 
-// favorite.addEventListener('click', function(){
-//     favorite.style.color = 'red';
+const favorite = document.querySelector('.favoritesBtn')
 
-//     if(e.target.classList.contains('fa-solid fa-heart-circle-plus favoritesBtn')){ 
-//         let  favoriteId = e.target; 
-//         // save  to DB 
-//         return favoriteId; 
-//     }
-// })
+favorite.addEventListener('click', function(){
+    
+ if(e.target.classList.contains('favoritesBtn')){ 
+    favorite.style.color = 'red';
+    console.log('hi');
+        let  favoriteId = e.target; 
+        // save  to DB 
+        return favoriteId; 
+    }
+})
+
+
+// document.body.addEventListener( 'click', function(e){
+//     if(e.target.classList == 'favoritesBtn'){
+//         console.log('ow')
+//     const favorite = document.querySelector('.favoritesBtn');
+//     favorite.addEventListener('click', function(){
+//         favorite.style.color = 'red';
+//     });
+//     };
+//   });
+
+// function addToFav(fav){
+//     fav.style.color = 'red'
+// }
 
 
