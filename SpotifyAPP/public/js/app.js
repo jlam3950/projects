@@ -1,3 +1,5 @@
+// const { default: fetch } = require("node-fetch");
+
 const searchBar = document.getElementById('searchBar');
 const searchBtn = document.getElementById('searchBtn');
 const sunny = document.getElementById('sunny');
@@ -8,19 +10,22 @@ const instructions = document.getElementById('instructions');
 const trackContainer = document.getElementById('track_container');
 const key = document.querySelector('.secret');
 
-// const { myKey } = require('./views/search.ejs');
-// // import { myKey } from 'search.ejs'
-// console.log(myKey);
+let pop;
+let dance;
+let instr;
+let val;
+let genre;
+let mood; 
 
-// import { myKey } from '.views/search.ejs'
-// console.log(myKey);
-
-let param1;
-let param2;
-let genre; 
-// let value = key.innerText; 
-// console.log(value);
-
+searchBtn.addEventListener('click', function(e){
+    e.preventDefault()
+    instructions.style.visibility = 'hidden';
+    weatherContainer.innerHTML = '';
+    trackContainer.innerHTML = '';
+    getWeather();
+    instructions.style.visibility = 'visible'; 
+});
+ 
 async function getWeather(){
     const address = searchBar.value; 
     const url = `https://api.geocod.io/v1.6/geocode?q=${address}&api_key=661f10101f5551601645516fff5559650249f94`;
@@ -54,27 +59,16 @@ async function weatherAPI(data){
 }
 
 function forecastAPI(data){
-
     const url = data.properties.forecast; 
 
     fetch(url).then(res => res.json()).then(forecastResponse =>{
-        console.log(forecastResponse.properties.periods)
         let data = forecastResponse.properties.periods;
         forecastRender(data);
     })
 }
 
-
 function forecastRender(forecastData){
     forecastData.forEach((day , index) => {
-
-        // if((day.name).hasOwnProperty(' ')){
-        //             day.name = 'Today';
-        //         }
-            
-        // day.name.replace(/Tonight/i, ' ')
-        // console.log(day.name);
-    
         
         if(index % 2 == 0){
 
@@ -85,63 +79,73 @@ function forecastRender(forecastData){
         <img class = 'dailyImg' src="${day.icon}">`        
         }
     })
-    // function shortenDay(x) {
-        //     if (x.name.hasOwnProperty(' ')) {
-            //         return x.name.slice(0, (day.name.indexOf(' ') + 1));
-            //     }
-            // }
 }
-
-/* <div> $day.shortForecast </div> */
-// was on line 73 with template literal 
 
 weatherContainer.addEventListener('click', function(e){
     if(e.target.classList.contains('weatherCard')){
         trackContainer.innerHTML = '';
-        let temp = (e.target.getAttribute('id').split(' '));
-        // console.log(temp);
+        let temp = (e.target.getAttribute('id').split(' ')[0]);
         tempParse(temp);
     }
 });
 
-function tempParse(temperature){
-    for(temp of temperature){
-        switch(temp){
-            case 'Mostly':
-                temp = 'Sunny';
-                console.log(temp);
-                weatherParameters(temp);
-                break;
-            case 'Chance':
-                temp = 'Thunderstorms';
-                console.log(temp);
-                break;
-            case 'Partly':
-                temp = 'Cloudy';
-                console.log(temp);
-                break;
-        }  
-        
-        weatherParameters(temp);
-    } 
+function tempParse(temp){
+    switch(temp){
+        case 'Mostly':
+            temp = 'Sunny';
+            weatherParameters(temp);
+            break;
+        case 'Chance':
+            temp = 'Thunderstorms';
+            break;
+        case 'Scattered':
+            temp = 'Thunderstorms';
+            break;
+        case 'Partly':
+            temp = 'Cloudy';
+            break;
+        case 'Areas':
+            temp = 'Cloudy';
+            break;
+    }  
+    console.log(temp);
+    weatherParameters(temp);
 } 
 
 function weatherParameters(temp){
     switch(temp){
         case "Sunny":
-            param1 = '0c6xIDDpzE81m2q797ordA';
-            param2 ='90';
-            genre= 'classical';
-            callRec(param1,param2,genre);
+            track = '0c6xIDDpzE81m2q797ordA';
+            pop= '100';
+            dance = '50';
+            instr = '50';
+            val = '100';
+            mood = '1';
+            callRec(track, pop, dance, instr, val)
+            break;
+        case "Thunderstorms":
+            track = '0c6xIDDpzE81m2q797ordA';
+            pop= '75';
+            dance = '10';
+            instr = '75';
+            val = '10';
+            mood = '0';
+            callRec(track, pop, dance, instr, val)
+            break;
+        case "Cloudy":
+            track = '0c6xIDDpzE81m2q797ordA';
+            pop= '50';
+            dance = '25';
+            instr = '100';
+            val = '50';
+            mood = '0';
+            callRec(track, pop, dance, instr, val, mood)
             break;
     }
 }
 
-async function callRec(tr, pop, genre) {
-    // need access_token for request
-    const url = `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&max_popularity=${pop}&seed_genres=${genre}`;
-
-    // console.log(value);
+async function callRec(tr, pop, dan, ins, val, mood){
+    const url =  `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&popularity=${pop}&danceability=${dan}&instrumentalness=${ins}&valence=${val}&mood=${mood}`
     try {
         const accessToken = await fetch('/accesstoken');
         const stringifyToken = await accessToken.json();
@@ -149,13 +153,10 @@ async function callRec(tr, pop, genre) {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + stringifyToken.access_token
-                // Authorization: 'Bearer ${value}'
             }
         });
 
         const data = await response.json();
-        console.log(data.tracks);
-        // console.log(data.tracks[0]);
         renderTracks(data.tracks);
         
     } catch (error) {
@@ -166,65 +167,54 @@ async function callRec(tr, pop, genre) {
 function renderTracks(tracks){
     console.log(tracks);
     for(track of tracks){
-        // if(track.preview_url === 'null'){
-        //     Come back to this
-        // }
+     
         trackContainer.innerHTML +=
         `<div class= 'songContainer'>
         <div>
         <img id ='albumArt' src =${track.album.images[0].url}>
         </div>
+        <div class = 'songArtist'>
+            Artist:${track.artists[0].name}
+        </div>
+        <div>
+            Song:${track.name}
+        </div>
         <div>
         </div> 
         <a href=${track.preview_url}>${track.preview_url ? 'Preview' : ''}</a>
-        <i class="fa-solid fa-heart-circle-plus favoritesBtn"></i>
-        </div>       
-        `
+        <i class="fa-solid fa-heart-circle-plus favoritesBtn" id = "${track.name} - ${track.artists[0].name}"></i>
+        </div>`
         }    
     }
-
-        // <div class = 'songArtist'>
-        //     Artist:${track.artists[0].name}
-        // </div>
-        // <div>
-        //     Song:${track.name}
-        // </div>
-
-searchBtn.addEventListener('click', function(e){
-    instructions.style.visibility = 'hidden';
-    e.preventDefault()
-    weatherContainer.innerHTML = '';
-    trackContainer.innerHTML = '';
-    getWeather();
-    instructions.style.visibility = 'visible'; 
+        // create onclick on the favoritesBtn to turn it to red, and to see if we can grab the value from one of the divs
+        // send that to server via post route, via front end 
+        // then on the backend can write to the database
+        // render the playlist from  backend 
+        
+document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('click', function(e){
+        if(e.target.classList.contains('favoritesBtn')){ 
+            let savedTrack = e.target.id;
+            console.log(savedTrack);
+            e.target.style.color = 'red';
+            saveTrack(savedTrack);
+        };
+    });
 });
 
-const favorite = document.querySelector('.favoritesBtn')
-
-favorite.addEventListener('click', function(){
-    
- if(e.target.classList.contains('favoritesBtn')){ 
-    favorite.style.color = 'red';
-    console.log('hi');
-        let  favoriteId = e.target; 
-        // save  to DB 
-        return favoriteId; 
+async function saveTrack(savedTrack = 'jeff'){
+    // const url = '/playlist';
+        try{
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "track" : "savedTrack",
+                })
+            })
+        } catch(err){
+            console.log(err);
+        }
     }
-})
-
-
-// document.body.addEventListener( 'click', function(e){
-//     if(e.target.classList == 'favoritesBtn'){
-//         console.log('ow')
-//     const favorite = document.querySelector('.favoritesBtn');
-//     favorite.addEventListener('click', function(){
-//         favorite.style.color = 'red';
-//     });
-//     };
-//   });
-
-// function addToFav(fav){
-//     fav.style.color = 'red'
-// }
-
-
