@@ -1,46 +1,59 @@
 <%- include('./partials/meta') -%>
 <body>
 
-    <div class="title_container">
-        <div>
-            <h1>Weatherify <i class="fa-brands fa-spotify"></i></h1>
-        </div>
-        <!-- <div class = title_logo_search>
-            <i class="fa-brands fa-spotify"></i>
-        </div> -->
-    </div>
-    <hr>
-
-    <!-- <div class = 'secret'>
-        JSON.stringify(k.spotifyKey)
-    </div> -->
+    <%- include('./partials/header') -%>
      
      <div class="content_container">
          <h2>Hi, <%= user.display_name %>!</h2>
-         <h3> Enter your zip code for personalized music recommendations</h3>
+         <h3> Enter your zip code, select a genre</h3>
          <form id = 'form_container'>
             <label for = 'search bar'></label>
             <input type = 'text' placeholder = 'Enter Zip' id ='searchBar'></input>
             <i class="fa-solid fa-magnifying-glass mag" id = 'searchBtn'></i>    
         </form>
              
-         <!-- <div>
-             <button id = 'searchBtn'>Submit</button>
-         </div> -->
+        <div id = 'genres'>
+            <div class="Rap">
+                Rap
+            </div>
+            <div class="country">
+                Country
+            </div>
+            <div class="classical">
+                Classical
+            </div>
+            <div class="electronic">
+                Electronic
+            </div>
+            <div class = "pop">
+                Pop
+            </div>
+            <div class="indie">
+                Indie
+            </div>
+            <div class="jazz">
+                Jazz
+            </div>
+            <div class="alternative">
+                Alternative
+            </div>
+            <div class="blueGrass">
+                Blue Grass
+            </div>
+            <div class="R&B">
+                R & B
+            </div>
+            <div class="opera">
+                Opera
+            </div>
+        </div>
 
-              <h4 id ='instructions'> Click on the weather card to generate your playlist</h4>
+        <h5 id ='instructions'> Click on the weather card to generate your playlist</h5>
 
          <div id = 'forecast_container'></div>
          <div id = 'track_container'></div>
      </div>
      
-
-    <script type = 'module'>
-        // export const myKey = JSON.stringify(k.spotifyKey) 
-        // export const myKey = <%- JSON.stringify(k.spotifyKey) %>
-        // console.log(myKey);
-        // console.log(myKey);
-    </script>
         <%- include('./partials/script') -%>
 
 </body>
