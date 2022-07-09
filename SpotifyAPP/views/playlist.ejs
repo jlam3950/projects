@@ -1,14 +1,19 @@
-<%- include('./partials/meta') -%>
+<%- include('./partials/meta') %>
 <body>
-    <%- include('./partials/header') -%>
-    
-    <!-- <button class = 'playlistBtn'>Playlist</button> -->
-    <div id = 'searchBtn' ></div>
-    <%- include('./partials/script') -%>
+    <%- include('./partials/header') %>
+        <div id = 'playlist'>
+            <h2>Saved Songs</h2>
+        <ul>
+            <% playlist.forEach(track => { %>
+                <li> <%= track %></li></a>
+                <% })%>
+            </ul>
+        </div>
+
+            <%- include('./partials/script') -%>
     <script>
-        // let playBtn = document.querySelector('.playlistBtn')
-        // playBtn.addEventListener('click', saveTrack());
-        saveTrack();
+        // const playlistContainer = document.getElementById('#playlist');
+        // saveTrack();
     </script>
 </body>
 
