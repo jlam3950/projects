@@ -9,21 +9,39 @@ const weatherContainer = document.getElementById('forecast_container');
 const instructions = document.getElementById('instructions');
 const trackContainer = document.getElementById('track_container');
 const key = document.querySelector('.secret');
+const searchContainer = document.getElementById('search_container')
+const loader = document.getElementById('loader');
+const resetBtn = document.getElementById('reset');
+// const genreTag = document.getElementById('genre_id')
 
+loader.hidden = true;
+resetBtn.hidden = true;
 let pop;
 let dance;
 let instr;
 let val;
-let genre;
 let mood; 
+let genreTotal = 'classical';
+// let genre = [];
+
+
+// document.querySelectorAll('#genre_id').forEach(tag => {
+//     tag.addEventListener('click', function(){
+//         // console.log(tag.innerHTML);
+//         genre.push(tag.innerHTML);
+//         genreTotal = genre.join();
+//         console.log(genreTotal);
+//     })
+// })
+
+// loading();
+// searchContainer.hidden = true;
 
 searchBtn.addEventListener('click', function(e){
     e.preventDefault()
-    instructions.style.visibility = 'hidden';
-    weatherContainer.innerHTML = '';
-    trackContainer.innerHTML = '';
+    loading();
     getWeather();
-    instructions.style.visibility = 'visible'; 
+    hideDuringSearch();
 });
  
 async function getWeather(){
@@ -68,6 +86,10 @@ function forecastAPI(data){
 }
 
 function forecastRender(forecastData){
+    complete();
+    resetBtn.hidden = false; 
+    searchContainer.hidden = true;
+
     forecastData.forEach((day , index) => {
         
         if(index % 2 == 0){
@@ -86,6 +108,9 @@ weatherContainer.addEventListener('click', function(e){
         trackContainer.innerHTML = '';
         let temp = (e.target.getAttribute('id').split(' ')[0]);
         tempParse(temp);
+        instructions.style.visibility = 'hidden';
+        console.log(genreTotal);
+
     }
 });
 
@@ -121,7 +146,8 @@ function weatherParameters(temp){
             instr = '50';
             val = '100';
             mood = '1';
-            callRec(track, pop, dance, instr, val)
+            // callRec( pop, dance, instr, val, genreTotal)
+            callRec(track, pop, dance, instr, val, mood, genreTotal)
             break;
         case "Thunderstorms":
             track = '0c6xIDDpzE81m2q797ordA';
@@ -130,7 +156,8 @@ function weatherParameters(temp){
             instr = '75';
             val = '10';
             mood = '0';
-            callRec(track, pop, dance, instr, val)
+            // callRec(track, pop, dance, instr, val, genreTotal);
+            callRec(track, pop, dance, instr, val, mood, genreTotal)
             break;
         case "Cloudy":
             track = '0c6xIDDpzE81m2q797ordA';
@@ -139,13 +166,24 @@ function weatherParameters(temp){
             instr = '100';
             val = '50';
             mood = '0';
-            callRec(track, pop, dance, instr, val, mood)
+            // callRec(track, pop, dance, instr, val, mood, genreTotal)
+            callRec(track, pop, dance, instr, val, mood, genreTotal)
+            break;
+        case "Clear":
+            track = '0c6xIDDpzE81m2q797ordA';
+            pop= '25';
+            dance = '50';
+            instr = '100';
+            val = '50';
+            mood = '0';
+            // callRec(track, pop, dance, instr, val, mood, genreTotal)
+            callRec(track, pop, dance, instr, val, mood, genreTotal)
             break;
     }
 }
 
-async function callRec(tr, pop, dan, ins, val, mood){
-    const url =  `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&popularity=${pop}&danceability=${dan}&instrumentalness=${ins}&valence=${val}&mood=${mood}`
+async function callRec(tr, pop, dan, ins, val, mood, genre){
+    const url = `https://api.spotify.com/v1/recommendations?seed_tracks=${tr}&limit=10&popularity=${pop}&danceability=${dan}&instrumentalness=${ins}&valence=${val}&mood=${mood}&genre=${genre}`
     try {
         const accessToken = await fetch('/accesstoken');
         const stringifyToken = await accessToken.json();
@@ -186,24 +224,26 @@ function renderTracks(tracks){
         </div>`
         }    
     }
-        // create onclick on the favoritesBtn to turn it to red, and to see if we can grab the value from one of the divs
-        // send that to server via post route, via front end 
-        // then on the backend can write to the database
-        // render the playlist from  backend 
         
 document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('click', function(e){
-        if(e.target.classList.contains('favoritesBtn')){ 
-            let savedTrack = e.target.id;
-            console.log(savedTrack);
-            e.target.style.color = 'red';
-            saveTrack(savedTrack);
+        if(e.target.classList.contains('favoritesBtn')){  
+            if(e.target.style.color == 'red'){
+                e.target.style.color = 'black';
+                //can create post request for delete here.
+                return;
+            }else{
+                let savedTrack = e.target.id;
+                e.target.style.color = 'red';
+                saveTrack(savedTrack);
+            }
         };
     });
 });
 
-async function saveTrack(savedTrack = 'jeff'){
-    // const url = '/playlist';
+async function saveTrack(savedTrack){
+    const url = '/search';
+
         try{
             const res = await fetch(url, {
                 method: 'POST',
@@ -211,10 +251,42 @@ async function saveTrack(savedTrack = 'jeff'){
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "track" : "savedTrack",
+                    "track" : savedTrack,
                 })
             })
         } catch(err){
             console.log(err);
         }
     }
+
+function loading(){
+    loader.hidden = false;
+    searchContainer.hidden = true;
+    trackContainer.hidden = true;
+    weatherContainer.hidden = true;
+}
+
+function complete(){
+    loader.hidden = true;
+    searchContainer.hidden = true;
+    // trackContainer.hidden = false;
+    // weatherContainer.hidden = false;
+}
+
+function hideDuringSearch(){
+    instructions.style.visibility = 'hidden';
+    weatherContainer.innerHTML = '';
+    trackContainer.innerHTML = '';
+    instructions.style.visibility = 'visible'; 
+    trackContainer.style.visibility = 'visible';
+    weatherContainer.style.visibility = 'visible';
+}
+
+resetBtn.addEventListener('click', function(){
+    weatherContainer.style.visibility = 'hidden';
+    trackContainer.style.visibility = 'hidden';
+    searchContainer.hidden = false;
+    genreTotal = 'classical';
+    instructions.style.visibility = 'hidden';
+    resetBtn.hidden = true;
+})
