@@ -65,7 +65,6 @@ app.get('/callback', async (req,res) => {
 
     const data = await response.json(); 
     access_token = data.access_token;
-    // console.log('Bearer ' + access_token);
     res.redirect('search');
 });
 
@@ -100,25 +99,14 @@ app.get('/accesstoken', (req,res) =>{
 
 app.get('/playlist', (req,res) => {
     
-    // const id = parseInt(req.params.user_id);
     pool.query("SELECT tracks FROM favorites", (err, res) =>{
         if(!err){
-            console.log(res.rows);
             let playlistArray = res.rows;
             playlist = playlistArray.map(a => a.tracks);
-            console.log(playlist);
-            // render(playlist);
-            // console.log(playlist.track)
         }else{
             console.log(err);
         }
-    // const userPlaylist = pool.query("SELECT track FROM testing WHERE user_id = ($1)", [id])
-    // res.render('playlist', { playlist: userPlaylist });
     })
-    // (error, results) => {
-    // pool.query("SELECT * FROM testing WHERE user_id = $1", [id], (error, results) => {
-    // if (error) throw error;
-    //     res.status(200).json(results.rows);
     res.render('playlist', { playlist });
     });
 
@@ -126,12 +114,13 @@ app.get('/playlist', (req,res) => {
 app.post('/search', async (req,res) => {
     try{
         const {track} = req.body;
+
         if(track == null){
             console.log("Track is null");
             return;
         }
+        
         const newTrack = await pool.query("INSERT INTO favorites (tracks, user_id) VALUES ($1,$2)", [ track, 1 ])
-        // console.log(newTrack);
         } catch(err){
             console.log(err);
         }
