@@ -1,67 +1,44 @@
-
-:root {
-    --margin-sm: 0.5rem;
-    --margin-md: 1rem;
-    --margin-lg: 2rem;
-    --margin-xl: 4rem;
-    --fs--xxs: 1rem;
-    --fs-xs: 1.2rem;
-    --fs-sm: 1.4rem;
-    --fs-md: 1.6rem;
-    --fs-lg: 2.3rem;
-    --fs-xl: 3rem;
-    --hs-xs: 1.5rem;
-    --hs-sm: 2rem;
-    --hs-md: 3rem;
-    --hs-lg: 4.7rem;
-    --hs-xl: 6.1rem;
-
-    --padding-desktop: 5rem 10rem;
-    --padding-mobile: 5rem 2rem;
-}
-
 *{
     box-sizing: border-box;
 }
 
+/* body{
+    scroll-snap-type: y;
+} */
+
 body{
     font-family: 'Roboto Slab', serif;
+    background-color: rgb(218, 224, 233);
     background-color: rgb(20,30,48);
     margin: 0;
 }
 
 .header{
-    /* display: flex;
-    justify-content: space-between; */
-    /* align-items: center; */
+    z-index: 2;
+    color: white;
     position: absolute;
     padding: 0 1rem;
     width: 100%;
     height: 10rem;
-    z-index: 2;
-    max-width: 100rem; 
-    color: white;
-    /* background-color: transparent; */
-    /* border: 2px solid black; */
+    max-width: 150rem; 
 }
 
 .navbar_hero{
     margin: 0 auto;
-    margin-top: 3rem;
     visibility: hidden;
+    margin-top: 3rem;
 }
 
 .navbar_hero > ul{
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .navbar_hero > ul > li > a {
     color: #000;
 }
-
 
 .navbar_hero > ul > li{
     list-style-type: none;
@@ -87,23 +64,21 @@ body{
 }
 
 .hero_container{
-    position: relative;
     display: flex;
     justify-content: center;
+    position: relative;
     z-index: 1;
-    /* max-width: 100rem; */ 
-    /* check this out again */
     margin: 0 auto;
     line-height: .5;
-    height: 100vh;
+    /* height: 100vh; */
+    min-height: 100vh;
     background-size: cover;
     background-image: url(christina-deravedisian-VDOhTPhJZb0-unsplash.jpg); 
     padding: 2rem;
-    /* make padding responsive; */
 }
 
 .hero_content{
-    position: relative;
+    position: absolute;
     top: 20%;
 }
 
@@ -127,17 +102,16 @@ body{
 }
 
 .projectsBtn{
+    border: none;
     position: relative;
-    width: 40%;
+    width: 8rem;
     padding: 1rem;
     border-radius: 25px;
-    border: none;
     background-color: rgb(62, 62, 211);
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #fff;
     margin-top: .8rem;
-    /* left: 33%; */
 }
 
 .projectsBtn:hover{
@@ -152,6 +126,10 @@ body{
     .navbar_hero{
         visibility: visible;
     }
+
+    .hero_container{
+        background-size: 200vh 140vh;
+    }
 } 
 
 /* About */
@@ -164,11 +142,11 @@ body{
     padding: 2rem;
     max-width: 100rem;
     color: white;
-    /* align-items: flex-start; */
 }
 
 .about_heading{
     text-align: center;
+    margin-top: 1rem;
 }
 
 .about_heading > h2{
@@ -181,7 +159,13 @@ body{
 }
 
 .profile_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 10px; 
+    min-width: 21.25rem;
+    max-width: 30rem;
+    /* revisit width */
     background: linear-gradient(to left top, rgb(20, 30, 48), rgba(227, 227, 227, 0.3));
     padding: 0 2rem;
     margin-top: 4em;
@@ -191,9 +175,43 @@ body{
     text-align: center;
 }
 
-/* .profile_info{
-    margin: 2rem auto;
-} */
+.profile_sub > h2{
+    font-size: 1.6rem;
+}
+
+.profile_info{
+    display: flex;
+    flex-direction: column;
+    line-height: .8rem;
+    max-width: 31.25rem;
+}
+
+.profile_info > p:nth-child(4){
+    font-size: .8rem;
+    margin-left: 1rem;
+}
+
+.profile_skills_header{
+    height: 4.5rem;
+}
+
+.profile_skills_header > h4{
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.profile_skills{
+    margin-bottom: 10px;
+}
+
+.fa-brands{
+    font-size: 3.5rem;
+    margin: 10px;
+}
+
+.fa-brands:hover{
+    opacity: 75%;
+}
 
 /* Projects */
 
@@ -225,68 +243,207 @@ body{
 .projects_header > p{
     display: block;
     line-height: 1.2;
-    /* check this later */
+}
+
+.tech_card_container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 5px;
+    padding: 1rem;
+}
+
+.card_info{
+    height: 2rem;
+}
+
+.tech_card{
+    border-radius: 5px;
+    background: rgba(142, 139, 139, 0.2);
+    padding: .3rem;
+    /* padding: 10px; */
+    font-size: 1rem;
+    margin: 2px;
+
 }
 
 .projectCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* min-width: 20.375rem; */
+    /* max-width: 40rem; */
+    max-width: 40rem; 
+    /* min-width: 5rem; */
     border-radius: 10px; 
-    background: linear-gradient(to left top, rgb(20, 30, 48), rgba(227, 227, 227, 0.3));
-    padding: .5rem 1rem;
-    margin: 2.5rem 0;
+    background: rgba(227, 227, 227, 0.1);
+    padding: 0rem 1rem;
+    padding-bottom: 1rem;
+    margin: 2.5rem auto;
     line-height: 1.2;
     /* add max width for responsiveness */
 }
-
-
 
 .card_header{
     font-size: 1.6rem;
 }
 
+.card_info{
+    max-width: 26rem;
+}
+
 .projectCard > img{
-    height: 15rem;
-    width: 17rem;
+    /* max-height: 15rem;
+    max-width: 18rem; */
+    width: 90%;
     border-radius: 5px;
 }
 
-@media screen and (min-width: 800px){
-    /* .about_container .projects_container{
-    } */
-    .projectCard{
-        width: 65%;
-        margin: 4rem auto;
-        padding: 0 1rem;
-        padding-bottom: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+.contact_container{
+    max-width: 100rem;
+}
+
+.footer_links{
+    margin: 1rem;
+    bottom: 2rem;
+}
+
+.footer_links > a{
+    padding: .3rem;
+}
+
+.footer_links > a > i{
+    font-size: 2.5rem;
+    color: rgb(213, 204, 204);
+}
+
+/* .footer_links > a > i:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+} */
+
+@media screen and (min-width: 800px) and (max-width: 1200px){
+    
+    /* *{
+        font-size: 20px;
+    } */ 
+
+    /* check the font size responsiveness  */
+
+    .about_container,
+    .projects_container,
+    .contact_container{
+        margin: 0 2rem;
     }
 
     .profile_card{
-        width: 65%;
         padding: 0 1rem;
-        padding-bottom: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding-bottom: .5rem;
+        margin-top: 2rem;
     }
 
-    .profile_info{
+    .projectCard{
+        max-width: 45rem;
+        /* max-width: 50rem; */
+        margin: 2rem auto;
+        padding: 0 1rem;
+        padding-bottom: 2rem;
+        /* display: flex;
+        flex-direction: column;
+        align-items: center; */
+    }
+
+
+    /* .profile_info{
         display: flex;
         flex-direction: column;
         align-items: start;
-    }
+    } */
 
     .projectCard > img{
-        height: 15rem;
-        width: 23rem;
-        margin-top: 2rem;
+        margin-top: 1rem;
+        /* height: 20rem;
+        width: 27rem; */
+    }
+
+} 
+
+
+@media screen and (min-width: 1200px){
+   
+    /* *{
+        font-size: 23px;
+    } */
+     /* check the font size responsiveness  */
+
+    .navbar_hero{
+        font-size: 2rem;
     }
 
     .about_container,
     .projects_container,
     .contact_container{
-        margin: 0 4rem;
+        margin: 0 8rem;
+        /* margin: 2rem 4rem; */
+    }
+
+    .profile_card{
+        width: 50%;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile_info{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    
+    
+    
+    /* .project_cardContainer{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 80vh;
+    }  */
+    
+    .project_cardContainer{
+        display: flex;
+        justify-content: center;
+        max-width: 150vw;
+        /* margin: 0 auto; */
+    }
+    
+    .projectCard{
+        display: flex;
+        width: 100%;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem 1rem;
+        padding: 0 2rem;
+        padding-bottom: .5rem;
+    }
+    
+    .projectCard > img{
+        /* height: 18rem;
+        width: 22rem; */
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .tech_card_container{
+        height: 4rem;
+        gap: .5rem;
     }
 } 
 
@@ -294,7 +451,7 @@ body{
 
 .contact_container{
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 2rem;
     width: 100%;
     color: white;
     display: flex;
@@ -302,19 +459,11 @@ body{
     align-items: center;
 }
 
-.contact_container > button{
-    margin: 0 auto;
-    width: 100px;
-    padding: .5rem;
-    border-radius: 5px;
-    position: relative;
-    background-color: rgb(228, 93, 93);
-    color: white;
-
-}
 
 .contact_text{
     margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.2rem;
 }
 
 .contact_header{
@@ -324,6 +473,35 @@ body{
     margin-bottom: 1rem;
 }
 
+
+.contact_container > form{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: start;
+    height: 25vh;
+}
+
+.contact_container > form > input{ 
+    margin-bottom: 1rem;
+}
+
+.msg_form{
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+.contact_container > form > button{
+    margin: 0 auto;
+    margin-top: 1.25rem;
+    width: 7rem;
+    padding: .5rem;
+    border-radius: 5px;
+    position: relative;
+    background-color: rgb(228, 93, 93);
+    color: white;
+}
 h2:after{ 
     content: '';
     display: block;
@@ -368,7 +546,6 @@ a{
     width: 225px;
     height: 100%;
     padding: 20px 0;
-    /* edit the padding later */
     padding-bottom: 150px;
     transition: all 0.5s ease;
     z-index: 2;
@@ -409,7 +586,7 @@ a{
 
 .wrapper .section{
     width: calc(100% - 225px);
-    margin-left: 225px;
+    margin-right: 225px;
     transition: all 0.5s ease;
 }
 
@@ -418,6 +595,7 @@ a{
     /* background-color: transparent;
     z-index: 2;
     max-width: 100rem;  */
+    z-index: 1;
     width: 100%;
     height: 50px;
     display: flex;
@@ -450,6 +628,18 @@ body.active .wrapper .section{
     width: 100%;
 }
 
+.sidebar_close{
+   position: absolute; 
+   top: 25px;
+   right: 25px;
+   font-size: 2rem;
+   color: white;
+}
+
+.sidebar_close:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
 
 
 
