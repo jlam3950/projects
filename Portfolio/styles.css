@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-/* body{
-    scroll-snap-type: y;
-} */
-
 body{
     font-family: 'Roboto Slab', serif;
     background-color: rgb(218, 224, 233);
@@ -70,7 +66,6 @@ body{
     z-index: 1;
     margin: 0 auto;
     line-height: .5;
-    /* height: 100vh; */
     min-height: 100vh;
     background-size: cover;
     background-image: url(christina-deravedisian-VDOhTPhJZb0-unsplash.jpg); 
@@ -79,7 +74,7 @@ body{
 
 .hero_content{
     position: absolute;
-    top: 20%;
+    top: 30%;
 }
 
 .hero_heading{
@@ -117,20 +112,6 @@ body{
 .projectsBtn:hover{
     cursor: pointer;
 }
-
-@media screen and (min-width: 800px){
-    .hamburger2{
-        visibility: hidden;
-    } 
-    
-    .navbar_hero{
-        visibility: visible;
-    }
-
-    .hero_container{
-        background-size: 200vh 140vh;
-    }
-} 
 
 /* About */
 
@@ -201,6 +182,9 @@ body{
 }
 
 .profile_skills{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
@@ -253,6 +237,7 @@ body{
     flex-wrap: wrap; 
     gap: 5px;
     padding: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .card_info{
@@ -280,11 +265,10 @@ body{
     /* min-width: 5rem; */
     border-radius: 10px; 
     background: rgba(227, 227, 227, 0.1);
-    padding: 0rem 1rem;
+    /* padding: 0rem 1rem; */
     padding-bottom: 1rem;
     margin: 2.5rem auto;
     line-height: 1.2;
-    /* add max width for responsiveness */
 }
 
 .card_header{
@@ -293,6 +277,7 @@ body{
 
 .card_info{
     max-width: 26rem;
+    margin-bottom: 1.5rem;
 }
 
 .projectCard > img{
@@ -300,6 +285,12 @@ body{
     max-width: 18rem; */
     width: 90%;
     border-radius: 5px;
+}
+
+.repo_link{
+    color:rgb(206, 55, 55);
+    position: relative;
+    top: .1rem;
 }
 
 .contact_container{
@@ -325,7 +316,7 @@ body{
     transform: scale(1.2);
 } */
 
-@media screen and (min-width: 800px) and (max-width: 1200px){
+@media screen and (min-width: 800px){
     
     /* *{
         font-size: 20px;
@@ -336,25 +327,27 @@ body{
     .about_container,
     .projects_container,
     .contact_container{
-        margin: 0 2rem;
+        margin: 0 3rem;
     }
 
-    .profile_card{
+    /* .profile_card{
         padding: 0 1rem;
         padding-bottom: .5rem;
         margin-top: 2rem;
-    }
+    } */
 
-    .projectCard{
-        max-width: 45rem;
+    /* .projectCard{
+        /* max-width: 45rem; */
         /* max-width: 50rem; */
-        margin: 2rem auto;
+        /* margin: 2rem auto;
         padding: 0 1rem;
-        padding-bottom: 2rem;
+        padding-bottom: 2rem; */
+        /* just changed these three lines */
         /* display: flex;
         flex-direction: column;
-        align-items: center; */
+        align-items: center; 
     }
+        */
 
 
     /* .profile_info{
@@ -364,23 +357,21 @@ body{
     } */
 
     .projectCard > img{
-        margin-top: 1rem;
+        /* margin-top: 1rem; */
         /* height: 20rem;
         width: 27rem; */
     }
-
 } 
 
 
-@media screen and (min-width: 1200px){
-   
-    /* *{
-        font-size: 23px;
-    } */
-     /* check the font size responsiveness  */
+@media screen and (min-width: 1400px){
+   /* changed from 1200px, also changed the medium media query to 1000px; */
+    *{
+        font-size: 24px;
+    }
 
-    .navbar_hero{
-        font-size: 2rem;
+    .navbar_hero > ul > li > a{
+        font-size: 1.3rem;
     }
 
     .about_container,
@@ -405,8 +396,6 @@ body{
         align-items: start;
     }
     
-    
-    
     /* .project_cardContainer{
         display:flex;
         flex-direction: row;
@@ -419,6 +408,8 @@ body{
         display: flex;
         justify-content: center;
         max-width: 150vw;
+        flex-wrap: wrap;
+        /* check flex-wrap again, see if want to keep as 3 columns */
         /* margin: 0 auto; */
     }
     
@@ -437,6 +428,7 @@ body{
         /* height: 18rem;
         width: 22rem; */
         width: 100%;
+        min-width: 26rem;
         margin-top: 2rem;
         margin-bottom: 1rem;
     }
@@ -449,6 +441,10 @@ body{
 
 /* contacts */
 
+textarea{
+    min-width: 5rem;
+}
+
 .contact_container{
     margin: 0 auto;
     padding: 0 2rem;
@@ -457,6 +453,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 10rem;
 }
 
 
@@ -473,24 +470,26 @@ body{
     margin-bottom: 1rem;
 }
 
-
 .contact_container > form{
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    align-items: start;
-    height: 25vh;
+    margin-bottom: 2rem;
+    /* height: 25vh; */
+    /* justify-content: space-between;  */
+    /* align-items: start;  */
+    /* justify-content: center; */
+    /* width: 10rem; */
 }
 
 .contact_container > form > input{ 
     margin-bottom: 1rem;
 }
 
-.msg_form{
+/* .msg_form{
     width: 100%;
     text-align: left;
     position: relative;
-}
+} */
 
 .contact_container > form > button{
     margin: 0 auto;
@@ -601,6 +600,8 @@ a{
     display: flex;
     align-items: center;
     padding: 0 5px;
+    position: relative;
+    /* just changed this */
 
 }
 
@@ -630,10 +631,12 @@ body.active .wrapper .section{
 
 .sidebar_close{
    position: absolute; 
-   top: 25px;
-   right: 25px;
+   top: .6rem;
+   right: .4rem;
    font-size: 2rem;
    color: white;
+   padding: 1rem;
+   z-index: 5;
 }
 
 .sidebar_close:hover {
@@ -641,5 +644,16 @@ body.active .wrapper .section{
     opacity: 50%;
 }
 
+@media screen and (min-width: 540px){
+    .hamburger2{
+        visibility: hidden;
+    } 
+    
+    .navbar_hero{
+        visibility: visible;
+    }
 
-
+    .hero_container{
+        background-size: 200vh 140vh;
+    }
+} 
