@@ -7,12 +7,10 @@
          <div id="search_container">
              <div class="search_container">
                 <h2>Hi, <%= user.display_name %>!</h2>
-                <h3> Enter your zip code, select a genre (up to 3)</h3>
+                <h3> Enter your zip code & select up to 3 genres</h3>
                 <form id = 'form_container'>
                     <label for = 'search bar'></label>
                     <input type = 'text' placeholder = 'Enter Zip' id ='searchBar'></input>
-                    <!-- <i class="fa-solid fa-magnifying-glass mag" id = 'searchBtn'></i>     -->
-                    <!-- <i class="fa-solid fa-magnifying-glass mag"></i>     -->
                 </form>
                     
                 <div id = 'genres'>
@@ -37,6 +35,7 @@
 
         <h5 id ='instructions'> Click on the weather card to generate your playlist</h5>
         
+        <div id = 'forecast_title'></div>
          <div id = 'forecast_container'></div>
          <div id = 'track_container'></div>
      </div>
