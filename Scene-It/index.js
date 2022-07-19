@@ -32,8 +32,8 @@ function saveToWatchList(id){
 
 function renderMovies(movieArray){
     let movieHtmlArray = movieArray.map(currentMovie => {
-            return `<div class = "col-4 mb-3 mt-3">
-                    <div class="card" style ="width:12rem"> 
+            return `<div class = "col-3 mb-3 mt-3">
+                    <div class="card" style ="max-width:15rem"> 
                     <img src= "${currentMovie.Poster}" class ='card-img-top'>
                     <div class = 'card-body'>
                         <h4 class ='card-title'>${currentMovie.Title}</h4>
