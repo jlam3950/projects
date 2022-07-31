@@ -21,22 +21,18 @@ const generateDeck = () =>{
   setDeck(newDeck);
 }
 
-const shuffle = () => {
- for(let card in deck){
-   let a = Math.random(Math.floor * deck.length);
-   let b = Math.random(Math.floor * deck.length);
+const shuffle = (deck) => {
+  console.log(deck[6])
+ for(let i = 0; i < deck.length; i++){
+   let a = Math.floor(Math.random() * i);
+   console.log(a)
+   let b = Math.floor(Math.random() * i);
    let tmp = deck[a];
    deck[a] = deck[b];
    deck[b] = tmp;
  }
+ return deck;
 }
-
-// const memCards = [];
-// const total = 16;
-
-// for(let index = 0; index < total; index++){
-//   memCards.push(<MemoryCard key ={index} />)
-// }
 
   useEffect(()=> {
     generateDeck();
@@ -68,7 +64,6 @@ const shuffle = () => {
     let cardToFlip = {...deck[cardIndex]};
     cardToFlip.isFlipped = true; 
     let newPickedCards = pickedCards.concat(cardIndex);
-    console.log(`newPicked ${newPickedCards}`)
     let newDeck = deck.map((card,index) => {
         if(cardIndex === index){
           return cardToFlip;
@@ -76,7 +71,7 @@ const shuffle = () => {
         return card; 
     })
 
-    if(newPickedCards.length == 2){
+    if(newPickedCards.length === 2){
       let card1Index = newPickedCards[0];
       let card2Index = newPickedCards[1];
       if(newDeck[card1Index].symbol !== newDeck[card2Index].symbol){
@@ -95,17 +90,14 @@ let cardsJSX = deck.map((card,index) => {
   return <MemoryCard key = {index} symbol={card.symbol} isFlipped={card.isFlipped} 
   pickCard = {pickCard.bind(pickCard,index)}/>
 })
-
-// console.log(<MemoryCard />)
   
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Memory Game</h1>
+        <h1> Memory Challenge</h1>
         <h3 className = 'App-subheader'>Match Cards to Win</h3>
       </header>
       <div className = 'cardContainer' >
-        {/* <div className = 'grid'>{ memCards }</div> */}
         <div className = 'grid'>
           <div>{cardsJSX.slice(0,4)}</div>
           <div>{cardsJSX.slice(4,8)}</div>
