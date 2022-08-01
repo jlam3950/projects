@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -7,10 +8,10 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-body{
+  background: url(appBackground.jpg);
+  background-size: cover;
+  height: 75vh;
 }
 
 .App-header {
@@ -28,7 +29,7 @@
 .App-subheader{
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  /* justify-content: start; */
   color: #666666;
   position: absolute; 
   top: 13%;
@@ -54,6 +55,48 @@
   border-radius: 4px;
 }
 
+.scoreContainer{
+  height: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.score{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2.2rem;
+  padding: .5rem;
+  padding-top: 1rem;
+  margin: 1rem;
+  /* border-top: 1px solid black; */
+}
+
+.scoreColor-green{
+  color: rgb(65, 149, 65);
+}
+
+.scoreColor-red{
+  color: rgb(167, 34, 34);
+}
+
+.resetBtn{
+  padding: .5rem 2rem;
+  background: rgb(247, 61, 61);
+  color: white;
+  border-radius: 10px;
+}
+
+.resetBtn:hover{
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
 
 @keyframes App-logo-spin {
   from {
