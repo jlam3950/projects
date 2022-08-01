@@ -1,5 +1,3 @@
-// const e = require("express");
-// const { default: fetch } = require("node-fetch");
 const searchBar = document.getElementById("searchBar");
 const searchBtn = document.getElementById("searchBtn");
 const sunny = document.getElementById("sunny");
@@ -96,8 +94,6 @@ async function weatherAPI(data) {
 function forecastAPI(data) {
   let locationData = data.properties.relativeLocation.properties;
   const url = data.properties.forecast;
-  // let cityState = data.properties.relativeLocation.city;
-  // console.log(cityState)
 
   fetch(url)
     .then((res) => res.json())
@@ -286,23 +282,6 @@ async function saveTrack(savedTrack) {
   }
 }
 
-// async function deleteTrack(savedTrack){
-//     const url = '/search'
-
-//     try{
-//         const res = await fetch(url. {
-//             method: "DELETE",
-//             headers: {
-//                 "content-type": "application/json",
-//             },
-            
-//         }),
-
-//     } catch (err){
-//         console.log(err);
-//     }
-// }
-
 function loading() {
   loader.hidden = false;
   searchContainer.hidden = true;
@@ -313,8 +292,6 @@ function loading() {
 function complete() {
   loader.hidden = true;
   searchContainer.hidden = true;
-  // trackContainer.hidden = false;
-  // weatherContainer.hidden = false;
 }
 
 function hideDuringSearch() {
@@ -327,7 +304,6 @@ function hideDuringSearch() {
 }
 
 resetBtn.addEventListener("click", function () {
-//   genreTotal = "classical";
 weatherTitle.innerHTML = "";
 resetBtn.hidden = true;
 searchContainer.hidden = false;
