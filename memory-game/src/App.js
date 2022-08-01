@@ -5,6 +5,7 @@ import ResetBtn from './components/Reset'
 import { useState, useEffect } from 'react';
 let newDeck;
 let points = 0; 
+let hiPoints = 0; 
 
 
 function App() {
@@ -114,7 +115,7 @@ let cardsJSX = deck.map((card,index) => {
           </div>
         </div>
         <div className = 'score'> 
-          <span>Score:</span>
+          Score:
           <UpdateScore score= {points}/>
         </div>
           <ResetBtn score= {points} function ={generateDeck} />
