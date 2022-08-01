@@ -38,7 +38,7 @@ const MemoryCard = (props) => {
         <div className = 'MemoryCard' onClick = { props.pickCard }>
             <div className = { props.isFlipped ? 'MemoryCardInner flipped' : 'MemoryCardInner'}> 
                 <div className = 'MemoryCardBack'>
-                    <img className = 'MemoryCardImg' src = { DClogo } alt ='logo' />
+                    {/* <img className = 'MemoryCardImg' src = { DClogo } alt ='logo' /> */}
                 </div>
                 <div className = 'MemoryCardFront'>
                 {/* {props.symbol} */}

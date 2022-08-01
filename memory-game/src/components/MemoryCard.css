@@ -8,8 +8,15 @@
     perspective: 800px;
 }
 
+
 .MemoryCardBack {
-    background-color: rgb(19, 103, 90);
+  background: repeating-linear-gradient(
+    45deg,
+    #bc6060,
+    #bc6060 10px,
+    #984646 10px,
+    #984646 20px
+  );
 }
 
 .MemoryCardFront{
@@ -34,7 +41,7 @@
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 5px;
-    border: 3px solid navy;
+    border: 3px solid rgb(33, 32, 32);
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   }
   
