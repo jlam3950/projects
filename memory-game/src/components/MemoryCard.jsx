@@ -38,7 +38,7 @@ const MemoryCard = (props) => {
         <div className = 'MemoryCard' onClick = { props.pickCard }>
             <div className = { props.isFlipped ? 'MemoryCardInner flipped' : 'MemoryCardInner'}> 
                 <div className = 'MemoryCardBack'>
-                    {/* <img className = 'MemoryCardImg' src = { DClogo } alt ='logo' /> */}
+                    <img className = 'MemoryCardImg' src = { DClogo } alt ='logo' />
                 </div>
                 <div className = 'MemoryCardFront'>
                 {/* {props.symbol} */}
@@ -50,7 +50,3 @@ const MemoryCard = (props) => {
 }
 
 export default MemoryCard;
-
-// useState returns the current state, and the function to update the state 
-// const [isFlipped, set Flip]. destructured. isFlipped is the current state while setFlip is the function
-//useState looks to demonstrate the current state

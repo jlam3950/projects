@@ -147,6 +147,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .search_container{
@@ -163,7 +164,7 @@ body{
     flex-direction: row;
     flex-basis: 1;
     gap: 10px;
-    margin: 0 1rem;
+    margin: 2rem 1rem;
 }
 
 #track_container{
@@ -205,7 +206,7 @@ body{
     font-size: 1rem;
     color: rgb(28, 26, 26);
     border: 1px solid black;
-    transition: all 1s ease-in;
+    /* transition: all 1s ease-in; */
     border-radius: 25px;
 } 
 

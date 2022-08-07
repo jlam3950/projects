@@ -1,13 +1,12 @@
 require('dotenv').config();
-const { response } = require('express');
 const express = require('express');
+const { response } = require('express');
 const { render } = require('express/lib/response');
 const app = express();
 const PORT = 3000; 
 const fetch = require('node-fetch');
 const pool = require('./db');
-// const spotifyRoutes = require('./src/spotify/routes')
-// const db = require('./src/spotify/queries');
+const searchRoutes = require('./routes/searchRoutes')
 
 app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static('public'));
@@ -23,13 +22,6 @@ let userInfo;
 let playlist = [];
 
 app.get('/', (req,res) => {
-    // pool.query('SELECT * FROM users WHERE user_id=1', (err,res)=>{
-    //     if(!err){
-    //         console.log(res.rows);
-    //     }else{
-    //         console.log(err);
-    //     }
-    // });
     res.render('index');
 })
 
@@ -43,6 +35,8 @@ app.get('/authorize', (req,res) => {
     })
     res.redirect("http://accounts.spotify.com/authorize?" + auth_parameters.toString());
 });
+
+// app.use('/authorize', authorizeRoutes);
 
 app.get('/callback', async (req,res) => {
     
@@ -67,6 +61,9 @@ app.get('/callback', async (req,res) => {
     access_token = data.access_token;
     res.redirect('search');
 });
+
+// app.use('/callback', callbackRoutes);
+
 
 async function addUser(){
     const response = await fetch('https://api.spotify.com/v1/me', {
@@ -110,6 +107,8 @@ app.get('/playlist', (req,res) => {
     res.render('playlist', { playlist });
     });
 
+// app.use('/playlist', playlistRoutes);
+
 
 app.post('/search', async (req,res) => {
     try{
@@ -126,4 +125,7 @@ app.post('/search', async (req,res) => {
         }
 })  
 
+// app.use('/search', searchRoutes);
+
 app.listen(PORT, () => console.log(`listening on port ${PORT}`)); 
+

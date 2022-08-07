@@ -5,8 +5,6 @@ import ResetBtn from './components/Reset'
 import { useState, useEffect } from 'react';
 let newDeck;
 let points = 0; 
-let hiPoints = 0; 
-
 
 function App() {
 const [deck, setDeck] = useState([]);
@@ -102,7 +100,8 @@ let cardsJSX = deck.map((card,index) => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Concentration 🦆</h1>
+        <h1> Concentration </h1>
+        {/* 🦆 */}
         <h3 className = 'App-subheader'>Match Cards to Win</h3>
       </header>
       <body className = 'App-body'>

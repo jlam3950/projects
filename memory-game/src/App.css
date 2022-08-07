@@ -53,6 +53,7 @@
   position: relative;
   perspective: 800px;
   border-radius: 4px;
+  padding-top: 2rem;
 }
 
 .scoreContainer{
