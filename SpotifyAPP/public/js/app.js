@@ -113,12 +113,11 @@ function forecastRender(forecastData, location) {
 
   forecastData.forEach((day, index) => {
     if (index % 2 == 0) {
-      weatherContainer.innerHTML += `<div class = weatherCard id = "${
-        day.shortForecast
-      }">
+      weatherContainer.innerHTML += 
+      `<div class = weatherCard id = "${day.shortForecast}">
+        <img class = 'dailyImg' src= "${day.icon}">
         <p class ='dailyName'> ${day.name.slice(0, 3)} </p>
-        <p class = 'dailyTemp'> ${day.temperature}° </p>
-        <img class = 'dailyImg' src="${day.icon}">`;
+        <p class = 'dailyTemp'> ${day.temperature}° </p>`;
     }
   });
 }
