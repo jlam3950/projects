@@ -8,7 +8,7 @@ body{
     background: url(./milad-fakurian-UiiHVEyxtyA-unsplash.jpg) center fixed;
     background: url(./sharon-mccutcheon-NkQD-RHhbvY-unsplash.jpg) center fixed;
     background-size: 1400px;
-    height: 120vh;
+    height: 100vh;
     /* height: 140vh; */
     /* display: flex; */
     /* justify-content: center; */
@@ -27,7 +27,7 @@ body{
     background: rgb(53, 142, 63);
     /* bottom: 30%; */
     /* margin-top: 27rem; */
-    transition: all 2s ease-out;
+    /* transition: all 2s ease-out; */
 }
 
 .authBtn:hover{
@@ -61,6 +61,7 @@ body{
     width: 55vw;
     font-size: 1rem;
     text-align: center;
+    line-height: .5rem;
 }
 
 .splash_info > h2{
@@ -157,6 +158,21 @@ body{
     align-items: center;
     margin-top: 2rem;
 }
+
+.search_container_subheader{
+    line-height: .5;
+    text-align: center; 
+    margin-bottom: 1.5rem;
+}
+
+.search_container_subheader > h2{
+    font-size: 2rem;
+}
+
+.search_container_subheader > h3{
+    font-size: 1.5rem;
+}
+
 #forecast_container{
     height: auto;
     width: auto;
@@ -168,13 +184,19 @@ body{
 }
 
 #track_container{
-    width: 600px;
+    max-width: 850px;
     display: flex; 
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin: 3rem 1rem;
+    border: 3px solid black;
+    padding: 1rem;
+    border-radius: 25px;
+    background-color: lavenderblush;
+    box-shadow: 0, 1px, 1px;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    margin-top: 2rem;
 }
 
 #searchBar{
@@ -215,11 +237,11 @@ body{
     cursor: pointer;
 }
 
-#reset{
+/* #reset{
     padding: .4rem 1rem;
     width: 90px;
     margin: 1rem auto;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: rgb(28, 26, 26);
     transition: all 2s ease-out;
     border: 1px solid black;
@@ -230,7 +252,7 @@ body{
 #reset:hover{
     background: rgb(215, 72, 20);
     cursor: pointer;
-}
+} */
 
 #genres{
     display: flex;
@@ -264,7 +286,7 @@ body{
 #forecast_title{
     height: 5vh;
     font-size: 1rem;
-    font-weight: 600;
+    padding-top: .5rem;
 }
 
 .weatherCard{
@@ -276,6 +298,7 @@ body{
 
 .dailyImg{
     border-radius: 10px;
+    border: 2px solid black;
 }
 
 .dailyName{
@@ -408,3 +431,15 @@ body{
         bottom: 18%;
     }
 }
+
+.swiper {
+    width: 600px;
+    height: 300px;
+  }
+
+  .swiper-slide {
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
