@@ -6,13 +6,25 @@ const app = express();
 const PORT = 3000; 
 const fetch = require('node-fetch');
 const pool = require('./db');
-const searchRoutes = require('./routes/searchRoutes')
+const searchRoutes = require('./routes/searchRoutes');
+const authorizeRoutes = require('./routes/authorizeRoutes');
+const callbackRoutes = require('./routes/callbackRoutes');
+const playlistRoutes = require('./routes/playlistRoutes');
+const path = require('path');
 
+app.use(express.static(path.join(__dirname, '/views/')))
+app.use(
+    '/css',
+    express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css'))
+)
+app.use(
+    '/js',
+    express.static(path.join(__dirname, 'node_modules/bootstrap/dist'))
+)
 app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static('public'));
 app.use(express.json());
 app.set('view engine', 'ejs');
-// app.use('/api/spotify', spotifyRoutes);
 
 const redirect_uri = 'http://localhost:3000/callback';
 const client = process.env.CLIENT_ID; 
@@ -36,10 +48,7 @@ app.get('/authorize', (req,res) => {
     res.redirect("http://accounts.spotify.com/authorize?" + auth_parameters.toString());
 });
 
-// app.use('/authorize', authorizeRoutes);
-
 app.get('/callback', async (req,res) => {
-    
     const code = req.query.code; 
     const body = new URLSearchParams({
         code: code,
@@ -61,9 +70,6 @@ app.get('/callback', async (req,res) => {
     access_token = data.access_token;
     res.redirect('search');
 });
-
-// app.use('/callback', callbackRoutes);
-
 
 async function addUser(){
     const response = await fetch('https://api.spotify.com/v1/me', {
@@ -91,9 +97,7 @@ app.get('/search', async (req,res) => {
 app.get('/accesstoken', (req,res) =>{
     res.send({access_token});
 })
-
-
-
+    
 app.get('/playlist', (req,res) => {
     
     pool.query("SELECT tracks FROM favorites", (err, res) =>{
@@ -106,9 +110,6 @@ app.get('/playlist', (req,res) => {
     })
     res.render('playlist', { playlist });
     });
-
-// app.use('/playlist', playlistRoutes);
-
 
 app.post('/search', async (req,res) => {
     try{
@@ -125,7 +126,11 @@ app.post('/search', async (req,res) => {
         }
 })  
 
-// app.use('/search', searchRoutes);
-
 app.listen(PORT, () => console.log(`listening on port ${PORT}`)); 
+
+//MVC route set up 
+// app.use('/authorize', authorizeRoutes);
+// app.use('/callback', callbackRoutes);
+// app.use('/playlist', playlistRoutes);
+// app.use('/search', searchRoutes);
 

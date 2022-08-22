@@ -123,20 +123,21 @@ function forecastRender(forecastData, location) {
 }
 
 weatherContainer.addEventListener("click", function (e) {
+  trackContainer.style.visibility = 'hidden';
+
   if (e.target.classList.contains("weatherCard")) {
     trackContainer.innerHTML = "";
     let temp = e.target.getAttribute("id").split(" ")[0];
+    console.log(temp);
     tempParse(temp);
     instructions.style.visibility = "hidden";
-    console.log(genreTotal);
   }
 });
 
 function tempParse(temp) {
   switch (temp) {
     case "Mostly":
-      temp = "Sunny";
-      weatherParameters(temp);
+      temp = "Patchy";
       break;
     case "Chance":
       temp = "Thunderstorms";
@@ -199,11 +200,20 @@ function weatherParameters(temp) {
       mood = "0";
       callRec(track, pop, dance, instr, val, mood, genreTotal);
       break;
+    case "Patchy":
+      track = "1YuknfkSYTTbolRpwZBOv4";
+      pop = "50";
+      dance = "50";
+      instr = "100";
+      val = "50";
+      mood = "1";
+      callRec(track, pop, dance, instr, val, mood, genreTotal);
+      break;
   }
 }
 
 async function callRec(tr, pop, dan, ins, val, mood, genre) {
-  const url = `https://api.spotify.com/v1/recommendations?seed_artists=${tr}&limit=15&popularity=${pop}&danceability=${dan}&instrumentalness=${ins}&valence=${val}&mood=${mood}&genre=${genre}`;
+  const url = `https://api.spotify.com/v1/recommendations?seed_artists=${tr}&limit=14&popularity=${pop}&danceability=${dan}&instrumentalness=${ins}&valence=${val}&mood=${mood}&genre=${genre}`;
   try {
     const accessToken = await fetch("/accesstoken");
     const stringifyToken = await accessToken.json();
@@ -215,6 +225,7 @@ async function callRec(tr, pop, dan, ins, val, mood, genre) {
     });
 
     const data = await response.json();
+    console.log(data.tracks);
     renderTracks(data.tracks);
   } catch (error) {
     console.log(error);
@@ -222,29 +233,30 @@ async function callRec(tr, pop, dan, ins, val, mood, genre) {
 }
 
 function renderTracks(tracks) {
-  console.log(tracks);
   for (track of tracks) {
     trackContainer.innerHTML += `<div class= 'songContainer'>
-            <div>
-            <img id ='albumArt' src =${track.album.images[0].url}>
-            </div>
-            <div class = 'songArtist'>
-                Artist:${track.artists[0].name}
-            </div>
-            <div>
-                Song:${track.name}
-            </div>
-            <div>
-            </div> 
-            <a href=${track.preview_url}>${
+    <div>
+    <img id ='albumArt' src =${track.album.images[0].url}>
+    </div>
+    <div class = 'songArtist'>
+    ${track.artists[0].name}
+    </div>
+    <a href=${track.preview_url}>${
       track.preview_url ? "Preview" : ""
     }</a>
-            <i class="fa-solid fa-heart-circle-plus favoritesBtn" id = "${
-              track.name
-            } - ${track.artists[0].name}"></i>
-            </div>`;
+    <i class="fa-solid fa-heart-circle-plus favoritesBtn" id = "${
+      track.name
+    } - ${track.artists[0].name}"></i>
+    </div>`;
   }
+  setTimeout(() =>{
+   trackContainer.style.visibility = 'visible';
+  }, '1000') 
 }
+
+            // <div>
+            //     Song:${track.name}
+            // </div>
 
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (e) {
@@ -284,7 +296,7 @@ async function saveTrack(savedTrack) {
 function loading() {
   loader.hidden = false;
   searchContainer.hidden = true;
-  trackContainer.hidden = true;
+  trackContainer.style.visibility = 'hidden';
   weatherContainer.hidden = true;
 }
 
@@ -298,7 +310,7 @@ function hideDuringSearch() {
   trackContainer.innerHTML = "";
   instructions.style.visibility = "hidden";
   instructions.style.visibility = "visible";
-  trackContainer.style.visibility = "visible";
+  // trackContainer.style.visibility = "visible";
   weatherContainer.style.visibility = "visible";
 }
 
@@ -310,3 +322,5 @@ searchContainer.hidden = false;
   trackContainer.style.visibility = "hidden";
   instructions.style.visibility = "hidden";
 });
+
+trackContainer.style.visibility = 'hidden';
