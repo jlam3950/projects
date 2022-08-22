@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 async function addUser(){
     const response = await fetch('https://api.spotify.com/v1/me', {
         method: 'GET',
@@ -16,8 +18,8 @@ async function addUser(){
     return data;
 }
 
-const search_addUser = (req,res) => {
-    const userInfo = addUser(); // await addUser()
+const search_addUser = async (req,res) => {
+    const userInfo = await addUser(); 
     res.render('search', { user: userInfo});  
 }
 

@@ -1,4 +1,6 @@
-const retrieveToken = (req,res) => {
+const fetch = require('node-fetch');
+
+const retrieveToken = async (req,res) => {
     const code = req.query.code; 
     const body = new URLSearchParams({
         code: code,
@@ -19,6 +21,7 @@ const retrieveToken = (req,res) => {
     const data = await response.json(); 
     access_token = data.access_token;
     res.redirect('search');
+}
 
 module.exports = {
     retrieveToken,
